@@ -51,7 +51,10 @@ class LogInViewController: UIViewController {
     //
     @objc func keyboardWasShown(notification: Notification) {
         
-        let info = notification.userInfo! as NSDictionary
+        guard let info = notification.userInfo as NSDictionary? else {
+            return
+        }
+        
         let keyboardSize = (info.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue).cgRectValue.size
         let contentInsert = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
         
@@ -59,16 +62,57 @@ class LogInViewController: UIViewController {
         self.mainScrollView?.scrollIndicatorInsets = contentInsert
     }
     
+    
     @objc func keyboardWillBeHidden(notification: Notification) {
     
         self.mainScrollView?.contentInset = UIEdgeInsets.zero
     }
+    
     
     @objc func hideKeyboard() {
         
         self.mainScrollView?.endEditing(true)
     }
     
+    
+    func checkUserData() -> Bool {
+        
+        var successful = false
+
+        guard let login = loginTextField.text,
+              let password = passwordTextField.text else {
+            return false
+        }
+        
+        if login == "admin" && password == "123456" {
+            loginTextField.text = ""
+            passwordTextField.text = ""
+            successful = true
+        } else {
+            successful = false
+        }
+        return successful
+    }
+    
+    
+    func showMessageLoginError() {
+        let alert = UIAlertController(title: "Ощибка входа", message: "Неверный логин или пароль", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Закрыть", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        let successful = checkUserData()
+        
+        guard successful else {
+            showMessageLoginError()
+            return successful
+        }
+        return successful
+    }
     
     
     //  MARK:   Actions
@@ -88,5 +132,6 @@ class LogInViewController: UIViewController {
             print("не OK")
         }
     }
+    
 }
 
