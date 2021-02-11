@@ -11,6 +11,10 @@ class AllGroupsTableViewController: UITableViewController {
 
     static var groups = getGroupData()
     
+    
+    
+    // MARK: - Life cycle
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +25,8 @@ class AllGroupsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

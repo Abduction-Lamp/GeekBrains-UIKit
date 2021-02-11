@@ -11,6 +11,10 @@ class FrendsTableViewController: UITableViewController {
 
     static let frends = getUserArrayData()
     
+    
+    
+    //  MARK: - Life cycle
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +25,8 @@ class FrendsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -36,7 +42,7 @@ class FrendsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FrendCell", for: indexPath) as! FrendTableViewCell
-
+        
         cell.fullNameLabel.text = FrendsTableViewController.frends?[indexPath.row].fullName
         cell.avatar.image = UIImage(named: FrendsTableViewController.frends?[indexPath.row].avatar ?? "VK_Compact_Logo")
         return cell
@@ -90,4 +96,28 @@ class FrendsTableViewController: UITableViewController {
 
     
     
+    
+    //  MARK: - Data transfer
+    //
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard segue.identifier == "SegueFromFrendsTableToFrendPhoto" else {
+            return
+        }
+        
+        //  Источник данных (экземпляр класса FrendsTableViewController)
+        guard let source = segue.source as? FrendsTableViewController else {
+            return
+        }
+        
+        //  Получатель данных (экземпляр класса FrendPhotoCollectionViewController)
+        guard let destination = segue.destination as? FrendPhotoCollectionViewController else {
+            return
+        }
+        
+        
+        if let index = source.tableView.indexPathForSelectedRow {
+            destination.userID = index.row
+        }
+    }
 }

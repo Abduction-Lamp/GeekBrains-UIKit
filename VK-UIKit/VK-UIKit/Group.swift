@@ -18,6 +18,7 @@ class Group {
 }
 
 
+
 //  MARK:   - Protocol Equatable
 //
 extension Group : Equatable {
@@ -29,6 +30,8 @@ extension Group : Equatable {
 
 
 
+//  MARK:   - Get Data
+//
 func getGroupData() -> [Group]? {
     
     let data: [(name: String, avatar: String)] = [

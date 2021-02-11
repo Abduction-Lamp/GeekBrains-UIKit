@@ -92,16 +92,16 @@ class LogInViewController: UIViewController {
             MyGroupsTableViewController.myGroups = getMyGroupData()
         } else {
             successful = false
-//            MyGroupsTableViewController.myGroups = getMyGroupData()
         }
         
         // FIXME:
-        return true
-//        return successful
+//        return true
+        return successful
     }
     
     
     func showMessageLoginError() {
+        
         let alert = UIAlertController(title: "Ощибка входа", message: "Неверный логин или пароль", preferredStyle: .alert)
         let action = UIAlertAction(title: "Закрыть", style: .cancel, handler: nil)
         alert.addAction(action)

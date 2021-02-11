@@ -33,11 +33,12 @@ class User {
         self.gender = gender
         self.age = age
     }
-    
 }
 
 
 
+//  MARK:   - Get Data
+//
 func getUserArrayData() -> [User]? {
     
     let data: [(String, String, User.Gender, UInt8)] = [
@@ -67,6 +68,8 @@ func getUserArrayData() -> [User]? {
     
     
     let avatar = ["001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011", "012", "013", "014", "015", "016", "017", "018", "019", "020", "021", "022"]
+    
+    
     
     
     guard data.count > 0 else {

@@ -11,6 +11,12 @@ private let reuseIdentifier = "FrendPhoto"
 
 class FrendPhotoCollectionViewController: UICollectionViewController {
 
+    var userID: Int!
+    
+    
+    
+    //  MARK:   - Life cycle
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,6 +29,8 @@ class FrendPhotoCollectionViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
     }
 
+    
+    
     /*
     // MARK: - Navigation
 
@@ -33,7 +41,9 @@ class FrendPhotoCollectionViewController: UICollectionViewController {
     }
     */
 
-    // MARK: UICollectionViewDataSource
+    
+    
+    // MARK: - UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -49,16 +59,16 @@ class FrendPhotoCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FrendPhotoCollectionViewCell
     
-        if let photo = FrendsTableViewController.frends?[indexPath.row].avatar {
-            print(indexPath.row)
-            print(photo)
+        if let photo = FrendsTableViewController.frends?[self.userID].avatar {
             cell.photoImageView.image = UIImage(named: photo)
         }
         
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
+    
+    
+    // MARK: - UICollectionViewDelegate
 
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
@@ -88,8 +98,5 @@ class FrendPhotoCollectionViewController: UICollectionViewController {
     
     }
     */
-
-    
-
 
 }
