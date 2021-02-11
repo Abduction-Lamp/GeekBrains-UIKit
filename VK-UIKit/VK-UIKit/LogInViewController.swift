@@ -10,7 +10,7 @@ import UIKit
 
 class LogInViewController: UIViewController {
 
-    //  MARK:   Outlet
+    //  MARK:   - Outlet
     //
     @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var loginTextField: UITextField!
@@ -19,7 +19,7 @@ class LogInViewController: UIViewController {
     
     
     
-    //  MARK:   Life cycle
+    //  MARK:   - Life cycle
     //
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,7 @@ class LogInViewController: UIViewController {
     
 
     
-    //  MARK:   Methods
+    //  MARK:   - Methods
     //
     @objc func keyboardWasShown(notification: Notification) {
         
@@ -88,10 +88,16 @@ class LogInViewController: UIViewController {
             loginTextField.text = ""
             passwordTextField.text = ""
             successful = true
+            
+            MyGroupsTableViewController.myGroups = getMyGroupData()
         } else {
             successful = false
+//            MyGroupsTableViewController.myGroups = getMyGroupData()
         }
-        return successful
+        
+        // FIXME:
+        return true
+//        return successful
     }
     
     
@@ -115,22 +121,10 @@ class LogInViewController: UIViewController {
     }
     
     
-    //  MARK:   Actions
+    //  MARK:   - Actions
     //
     @IBAction func singinTouchUp(_ sender: UIButton) {
-        
-        guard let login = loginTextField.text else {
-            return
-        }
-        guard let password = passwordTextField.text else {
-            return
-        }
-        
-        if login == "admin" && password == "123456" {
-            print("OK")
-        } else {
-            print("не OK")
-        }
+
     }
     
 }

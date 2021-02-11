@@ -15,6 +15,16 @@
 		4E53E18D25CAA7750083DD3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E53E18B25CAA7750083DD3E /* LaunchScreen.storyboard */; };
 		4E53E19825CAA7750083DD3E /* VK_UIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E53E19725CAA7750083DD3E /* VK_UIKitTests.swift */; };
 		4E53E1A325CAA7750083DD3E /* VK_UIKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E53E1A225CAA7750083DD3E /* VK_UIKitUITests.swift */; };
+		4EAB58B025D3E8DA00C6FF57 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB58AF25D3E8DA00C6FF57 /* User.swift */; };
+		4EAB58B525D3EBAF00C6FF57 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB58B425D3EBAF00C6FF57 /* Group.swift */; };
+		4EAB58BC25D3FE5D00C6FF57 /* FrendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB58BB25D3FE5D00C6FF57 /* FrendsTableViewController.swift */; };
+		4EAB58C425D3FE8100C6FF57 /* FrendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB58C325D3FE8100C6FF57 /* FrendTableViewCell.swift */; };
+		4EAB58CD25D42F2A00C6FF57 /* MyGroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB58CC25D42F2A00C6FF57 /* MyGroupsTableViewCell.swift */; };
+		4EAB58D225D42F6700C6FF57 /* MyGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB58D125D42F6700C6FF57 /* MyGroupsTableViewController.swift */; };
+		4EAB58DA25D4349400C6FF57 /* AllGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB58D925D4349400C6FF57 /* AllGroupsTableViewController.swift */; };
+		4EAB58DF25D434B900C6FF57 /* AllGroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB58DE25D434B900C6FF57 /* AllGroupsTableViewCell.swift */; };
+		4EAB58E425D445C400C6FF57 /* FrendPhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB58E325D445C400C6FF57 /* FrendPhotoCollectionViewController.swift */; };
+		4EAB58E925D445E300C6FF57 /* FrendPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB58E825D445E300C6FF57 /* FrendPhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +59,16 @@
 		4E53E19E25CAA7750083DD3E /* VK-UIKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VK-UIKitUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E53E1A225CAA7750083DD3E /* VK_UIKitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VK_UIKitUITests.swift; sourceTree = "<group>"; };
 		4E53E1A425CAA7750083DD3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EAB58AF25D3E8DA00C6FF57 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4EAB58B425D3EBAF00C6FF57 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		4EAB58BB25D3FE5D00C6FF57 /* FrendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrendsTableViewController.swift; sourceTree = "<group>"; };
+		4EAB58C325D3FE8100C6FF57 /* FrendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrendTableViewCell.swift; sourceTree = "<group>"; };
+		4EAB58CC25D42F2A00C6FF57 /* MyGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsTableViewCell.swift; sourceTree = "<group>"; };
+		4EAB58D125D42F6700C6FF57 /* MyGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsTableViewController.swift; sourceTree = "<group>"; };
+		4EAB58D925D4349400C6FF57 /* AllGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsTableViewController.swift; sourceTree = "<group>"; };
+		4EAB58DE25D434B900C6FF57 /* AllGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsTableViewCell.swift; sourceTree = "<group>"; };
+		4EAB58E325D445C400C6FF57 /* FrendPhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrendPhotoCollectionViewController.swift; sourceTree = "<group>"; };
+		4EAB58E825D445E300C6FF57 /* FrendPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrendPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +119,9 @@
 		4E53E17F25CAA7730083DD3E /* VK-UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				4EAB58C825D42EE400C6FF57 /* Groups */,
+				4EAB58BA25D3FE1300C6FF57 /* Frends */,
+				4EAB58AE25D3E89200C6FF57 /* Model */,
 				4E53E18025CAA7730083DD3E /* AppDelegate.swift */,
 				4E53E18225CAA7730083DD3E /* SceneDelegate.swift */,
 				4E53E18425CAA7730083DD3E /* LogInViewController.swift */,
@@ -126,6 +149,37 @@
 				4E53E1A425CAA7750083DD3E /* Info.plist */,
 			);
 			path = "VK-UIKitUITests";
+			sourceTree = "<group>";
+		};
+		4EAB58AE25D3E89200C6FF57 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4EAB58AF25D3E8DA00C6FF57 /* User.swift */,
+				4EAB58B425D3EBAF00C6FF57 /* Group.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4EAB58BA25D3FE1300C6FF57 /* Frends */ = {
+			isa = PBXGroup;
+			children = (
+				4EAB58BB25D3FE5D00C6FF57 /* FrendsTableViewController.swift */,
+				4EAB58C325D3FE8100C6FF57 /* FrendTableViewCell.swift */,
+				4EAB58E325D445C400C6FF57 /* FrendPhotoCollectionViewController.swift */,
+				4EAB58E825D445E300C6FF57 /* FrendPhotoCollectionViewCell.swift */,
+			);
+			name = Frends;
+			sourceTree = "<group>";
+		};
+		4EAB58C825D42EE400C6FF57 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				4EAB58CC25D42F2A00C6FF57 /* MyGroupsTableViewCell.swift */,
+				4EAB58D125D42F6700C6FF57 /* MyGroupsTableViewController.swift */,
+				4EAB58D925D4349400C6FF57 /* AllGroupsTableViewController.swift */,
+				4EAB58DE25D434B900C6FF57 /* AllGroupsTableViewCell.swift */,
+			);
+			name = Groups;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +312,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EAB58B025D3E8DA00C6FF57 /* User.swift in Sources */,
+				4EAB58D225D42F6700C6FF57 /* MyGroupsTableViewController.swift in Sources */,
 				4E53E18525CAA7730083DD3E /* LogInViewController.swift in Sources */,
 				4E53E18125CAA7730083DD3E /* AppDelegate.swift in Sources */,
+				4EAB58CD25D42F2A00C6FF57 /* MyGroupsTableViewCell.swift in Sources */,
+				4EAB58BC25D3FE5D00C6FF57 /* FrendsTableViewController.swift in Sources */,
+				4EAB58B525D3EBAF00C6FF57 /* Group.swift in Sources */,
+				4EAB58E425D445C400C6FF57 /* FrendPhotoCollectionViewController.swift in Sources */,
+				4EAB58DA25D4349400C6FF57 /* AllGroupsTableViewController.swift in Sources */,
+				4EAB58DF25D434B900C6FF57 /* AllGroupsTableViewCell.swift in Sources */,
+				4EAB58C425D3FE8100C6FF57 /* FrendTableViewCell.swift in Sources */,
 				4E53E18325CAA7730083DD3E /* SceneDelegate.swift in Sources */,
+				4EAB58E925D445E300C6FF57 /* FrendPhotoCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
