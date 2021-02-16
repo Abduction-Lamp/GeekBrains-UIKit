@@ -11,7 +11,7 @@ class FrendTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var fullNameLabel: UILabel!
-    @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var shadow: ShadowView!
     
     
     override func awakeFromNib() {

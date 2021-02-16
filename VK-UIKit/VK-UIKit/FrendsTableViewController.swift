@@ -44,7 +44,8 @@ class FrendsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FrendCell", for: indexPath) as! FrendTableViewCell
         
         cell.fullNameLabel.text = FrendsTableViewController.frends?[indexPath.row].fullName
-        cell.avatar.image = UIImage(named: FrendsTableViewController.frends?[indexPath.row].avatar ?? "VK_Compact_Logo")
+        cell.shadow.avatar.image = UIImage(named: FrendsTableViewController.frends?[indexPath.row].avatar ?? "VK_Compact_Logo")
+        
         return cell
     }
     
@@ -57,7 +58,7 @@ class FrendsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    /*_staticDataSource    id    0x0    0x0000000000000000
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -118,6 +119,7 @@ class FrendsTableViewController: UITableViewController {
         
         if let index = source.tableView.indexPathForSelectedRow {
             destination.userID = index.row
+            destination.countPhotos = FrendsTableViewController.frends?[index.row].photos?.count
         }
     }
 }

@@ -25,8 +25,22 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
-        
         self.mainScrollView?.addGestureRecognizer(hideKeyboardGesture)
+        
+        
+        let cornerRadius = CGFloat(7)
+        let shadowOpacity: Float = 0.7
+        let shadowOffset = CGSize(width: 2.0, height: 2.0)
+        
+        loginTextField.layer.shadowOpacity = shadowOpacity
+        loginTextField.layer.shadowOffset = shadowOffset
+        
+        passwordTextField.layer.shadowOpacity = shadowOpacity
+        passwordTextField.layer.shadowOffset = shadowOffset
+    
+        buttonSignIn.layer.cornerRadius = cornerRadius
+        buttonSignIn.layer.shadowOpacity = shadowOpacity
+        buttonSignIn.layer.shadowOffset = shadowOffset
     }
 
     
@@ -95,8 +109,8 @@ class LogInViewController: UIViewController {
         }
         
         // FIXME:
-//        return true
-        return successful
+        return true
+//        return successful
     }
     
     
