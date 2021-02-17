@@ -7,45 +7,46 @@
 
 import UIKit
 
-//@IBDesignable
+@IBDesignable
 class ShadowView: UIView {
 
+    override class var layerClass: AnyClass {
+        return CAShapeLayer.self
+    }
+    
+    // MARK: -
+    //
     @IBOutlet weak var avatar: UIImageView!
     
     
     @IBInspectable
     var radius: CGFloat = 20 {
         didSet {
-            setNeedsDisplay()
+//            setNeedsDisplay()
         }
     }
     
     @IBInspectable
     var shadowColor = UIColor.black {
         didSet {
-            setNeedsDisplay()
+//            setNeedsDisplay()
         }
     }
     
     @IBInspectable
     var shadowOpacity: Float = 0.5 {
         didSet {
-            setNeedsDisplay()
+//            setNeedsDisplay()
         }
     }
     
     @IBInspectable
     var shadowOffset = CGSize(width: 2, height: 1) {
         didSet {
-            setNeedsDisplay()
+//            setNeedsDisplay()
         }
     }
     
-    
-    override class var layerClass: AnyClass {
-        return CAShapeLayer.self
-    }
-
     
     
     // MARK: -

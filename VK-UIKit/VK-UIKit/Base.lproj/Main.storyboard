@@ -224,6 +224,11 @@
                                                 <constraint firstAttribute="height" constant="150" id="npH-uF-zWA"/>
                                             </constraints>
                                         </imageView>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yBQ-de-G4T" customClass="LikeButtonControl" customModule="VK_UIKit" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="120" width="150" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="5bg-Ku-KUZ" firstAttribute="leading" secondItem="foP-Mn-Mtt" secondAttribute="leading" id="UbE-T0-d4M"/>
@@ -246,7 +251,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sxk-ze-THR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3881" y="-234"/>
+            <point key="canvasLocation" x="3880.8000000000002" y="-234.23645320197045"/>
         </scene>
         <!--Группы-->
         <scene sceneID="rEz-Qv-O8U">
