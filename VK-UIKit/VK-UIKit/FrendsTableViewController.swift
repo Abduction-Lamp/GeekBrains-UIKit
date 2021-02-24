@@ -8,9 +8,8 @@
 import UIKit
 
 class FrendsTableViewController: UITableViewController {
-
-    static let frends = getUserArrayData()
     
+    var abcNavigationControl: ABCSortByControl!
     
     
     //  MARK: - Life cycle
@@ -23,6 +22,12 @@ class FrendsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        Frends.data.sortByUp()
+        
+        abcNavigationControl = ABCSortByControl(frame: self.view.bounds)
+        self.view.addSubview(abcNavigationControl)
+        self.view.bringSubviewToFront(abcNavigationControl)
     }
 
     
@@ -36,15 +41,16 @@ class FrendsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return FrendsTableViewController.frends?.count ?? 0
+        return Frends.data.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FrendCell", for: indexPath) as! FrendTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FrendCell", for: indexPath) as? FrendTableViewCell else {
+            return UITableViewCell()
+        }
         
-        cell.fullNameLabel.text = FrendsTableViewController.frends?[indexPath.row].fullName
-        cell.shadow.avatar.image = UIImage(named: FrendsTableViewController.frends?[indexPath.row].avatar ?? "VK_Compact_Logo")
+        cell.setupUser(user: Frends.data.getUser(id: indexPath.row) ?? nil)
         
         return cell
     }
@@ -85,17 +91,6 @@ class FrendsTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    
     
     
     //  MARK: - Data transfer
@@ -116,10 +111,17 @@ class FrendsTableViewController: UITableViewController {
             return
         }
         
-        
         if let index = source.tableView.indexPathForSelectedRow {
-            destination.userID = index.row
-            destination.countPhotos = FrendsTableViewController.frends?[index.row].photos?.count
+            destination.setData(
+                userID: index.row,
+                countPhotos: Frends.data.getCountPhotosForUser(id: index.row)
+            )
         }
+    }
+
+    
+    @IBAction func logOut(_ sender: UIBarButtonItem) {
+        
+        self.dismiss(animated: true, completion: nil)
     }
 }

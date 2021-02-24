@@ -25,11 +25,16 @@ class LikeButtonControl: UIControl {
     }
     
     
+//    let rotationIcon = UIImage(named: "arrow")
+//    let rotationButton = UIButton(type: .custom)
+    
+    
+    
     // MARK: - Init
     //
     private func setup() -> Void {
         
-        self.backgroundColor = UIColor.white.withAlphaComponent(0)
+        self.backgroundColor = UIColor.black.withAlphaComponent(0)
         
 
         let whitespace = CGFloat(5)
@@ -42,7 +47,7 @@ class LikeButtonControl: UIControl {
         let labelFrame = CGRect(
             x: buttonFrame.width + whitespace,
             y: 0,
-            width: self.frame.width - buttonFrame.width - whitespace,
+            width: self.frame.width - 2 * (buttonFrame.width + whitespace),
             height: self.frame.height
         )
         
@@ -53,6 +58,17 @@ class LikeButtonControl: UIControl {
         label.frame = labelFrame
         label.text = "\(likeCount)"
         
+//        buttonFrame = CGRect(
+//            x: buttonFrame.width + labelFrame.width + 2 * whitespace,
+//            y: 0,
+//            width: self.frame.height,
+//            height: self.frame.height
+//        )
+//        rotationButton.frame = buttonFrame
+//        rotationButton.setImage(rotationIcon, for: .normal)
+//        rotationButton.addTarget(self, action: #selector(rotation(_:)), for: .touchUpInside)
+//
+//        self.addSubview(rotationButton)
         self.addSubview(label)
         self.addSubview(button)
     }
@@ -69,6 +85,7 @@ class LikeButtonControl: UIControl {
 
         self.setup()
     }
+    
     
     
     // MARK: - Action
@@ -89,6 +106,14 @@ class LikeButtonControl: UIControl {
     }
     
     
+//    @objc func rotation(_ sender: UIButton) {
+//
+//        let rotation = CGAffineTransform(rotationAngle: .pi / 4)
+//
+//        self.superview?.transform = rotation
+//        self.setNeedsDisplay()
+//
+//    }
     
     /*
     // Only override draw() if you perform custom drawing.

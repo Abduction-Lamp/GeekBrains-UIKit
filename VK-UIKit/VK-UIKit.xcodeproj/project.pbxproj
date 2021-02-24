@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4E118AEA25DC706C000566D7 /* LikeButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E118AE925DC706C000566D7 /* LikeButtonControl.swift */; };
 		4E11E24425D9C9FF00CC176D /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E11E24325D9C9FF00CC176D /* ShadowView.swift */; };
+		4E456B6D25DE75F7003A5EAC /* ABCSortByControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E456B6C25DE75F7003A5EAC /* ABCSortByControl.swift */; };
 		4E53E18125CAA7730083DD3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E53E18025CAA7730083DD3E /* AppDelegate.swift */; };
 		4E53E18325CAA7730083DD3E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E53E18225CAA7730083DD3E /* SceneDelegate.swift */; };
 		4E53E18525CAA7730083DD3E /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E53E18425CAA7730083DD3E /* LogInViewController.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		4E118AE925DC706C000566D7 /* LikeButtonControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonControl.swift; sourceTree = "<group>"; };
 		4E11E24325D9C9FF00CC176D /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		4E456B6C25DE75F7003A5EAC /* ABCSortByControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABCSortByControl.swift; sourceTree = "<group>"; };
 		4E53E17D25CAA7730083DD3E /* VK-UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VK-UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E53E18025CAA7730083DD3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E53E18225CAA7730083DD3E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,14 @@
 				4E11E24325D9C9FF00CC176D /* ShadowView.swift */,
 			);
 			name = AvatarView;
+			sourceTree = "<group>";
+		};
+		4E19518125DD5A0700104597 /* SortBy */ = {
+			isa = PBXGroup;
+			children = (
+				4E456B6C25DE75F7003A5EAC /* ABCSortByControl.swift */,
+			);
+			name = SortBy;
 			sourceTree = "<group>";
 		};
 		4E53E17425CAA7730083DD3E = {
@@ -183,6 +193,7 @@
 		4EAB58BA25D3FE1300C6FF57 /* Frends */ = {
 			isa = PBXGroup;
 			children = (
+				4E19518125DD5A0700104597 /* SortBy */,
 				4E11E23D25D9A80800CC176D /* AvatarView */,
 				4EAB58BB25D3FE5D00C6FF57 /* FrendsTableViewController.swift */,
 				4EAB58C325D3FE8100C6FF57 /* FrendTableViewCell.swift */,
@@ -349,6 +360,7 @@
 				4EAB58C425D3FE8100C6FF57 /* FrendTableViewCell.swift in Sources */,
 				4E53E18325CAA7730083DD3E /* SceneDelegate.swift in Sources */,
 				4EAB58E925D445E300C6FF57 /* FrendPhotoCollectionViewCell.swift in Sources */,
+				4E456B6D25DE75F7003A5EAC /* ABCSortByControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

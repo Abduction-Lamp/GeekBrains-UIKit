@@ -24,4 +24,9 @@ class AllGroupsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func setData(name: String, avatarName: String) -> Void {
+       
+        self.groupName.text = name
+        self.avatar.image = UIImage(named: avatarName)
+    }
 }

@@ -14,11 +14,13 @@ class ShadowView: UIView {
         return CAShapeLayer.self
     }
     
-    // MARK: -
-    //
+
     @IBOutlet weak var avatar: UIImageView!
     
     
+    
+    // MARK: - Inspectable Var
+    //
     @IBInspectable
     var radius: CGFloat = 20 {
         didSet {

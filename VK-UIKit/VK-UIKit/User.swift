@@ -8,26 +8,34 @@
 import UIKit
 
 
-class User {
+struct User {
     
     enum Gender: String {
         case Male   = "Мужчина"
         case Female = "Женщина"
     }
     
-    let firstName: String
-    let lastName: String
+    
+    // MARK: - Properties
+    //
+    var firstName: String
+    var lastName: String
+    
     var fullName: String {
         return firstName + " " + lastName
     }
+    
+    
     let gender: Gender
+    
     var age: UInt8
     
     var avatar: String?
-    
     var photos: [String]?
     
     
+    // MARK: - Init
+    //
     init(firstName: String, lastName: String, gender: Gender, age: UInt8) {
         
         self.firstName = firstName
@@ -35,20 +43,138 @@ class User {
         self.gender = gender
         self.age = age
     }
+    
+    
+    // MARK: - Methods
+    //
+    mutating func setAvatar(name: String) {
+        self.avatar = name
+    }
+    
+    mutating func setPhotos(arrayNameByPhotos: [String]) {
+        self.photos = arrayNameByPhotos
+    }
 }
+
+
+
+
+class Frends {
+    
+    static var data = Frends()
+    
+    private var frends: [User]? = getUserArrayData()
+    var count: Int {
+        return frends?.count ?? 0
+    }
+    
+    private var sectionsInfo = [(name: Character, count: Int)]()
+    
+    
+    
+    // MARK: - Init
+    //
+    private init() { }
+    
+    
+    
+    // MARK: - Methods
+    //
+    func getUser(id: Int) -> User? {
+        return frends?[id]
+    }
+    
+    func getCountPhotosForUser(id: Int) -> Int {
+        return frends?[id].photos?.count ?? 0
+    }
+    
+    
+    func sortByDown() {
+        self.frends?.sort(by: { (userOne: User, UserTwo: User) -> Bool in
+                        
+            return userOne.lastName >= UserTwo.lastName
+        })
+        
+        self.calculationSectionsInfo()
+    }
+                
+    func sortByUp() {
+        self.frends?.sort(by: { (userOne: User, UserTwo: User) -> Bool in
+            
+            return userOne.lastName < UserTwo.lastName
+        })
+        
+        self.calculationSectionsInfo()
+    }
+    
+    
+    func getNumberOfRowsInSection(index: Int) -> Int? {
+        
+        var count: Int?
+        if index < sectionsInfo.count {
+            count = sectionsInfo[index].count
+        }
+        
+        return count
+    }
+    
+    func getLetterNameOfSection(index: Int) -> Character? {
+        
+        var char: Character?
+        if index < sectionsInfo.count {
+            char = sectionsInfo[index].name
+        }
+        
+        return char
+    }
+    
+    
+    private func calculationSectionsInfo() {
+        
+        if frends != nil {
+            for frend in frends! {
+                guard let char = frend.lastName.first else {
+                    continue
+                }
+                
+                if let index = checkLetterForPresence(char: char) {
+                    sectionsInfo[index].count += 1
+                } else {
+                    let tuple = (name: char, count: 1)
+                    sectionsInfo.append(tuple)
+                }
+                
+            }
+        }
+    }
+    
+    private func checkLetterForPresence(char: Character) -> Int? {
+        
+        var check: Int? = nil
+        
+        for (index, section) in sectionsInfo.enumerated() {
+            if section.name == char {
+                check = index
+                break
+            }
+        }
+        return check
+    }
+}
+
 
 
 
 //  MARK:   - Get Data
 //
-func getUserArrayData() -> [User]? {
+private func getUserArrayData() -> [User]? {
     
     let data: [(String, String, User.Gender, UInt8, [String])] = [
         ("Иван", "Иванов", .Male, 20, ["001", "002", "003", "004", "005", "006", "007", "008"]),
         ("Петр", "Петров", .Male, 21, ["010", "011", "012", "013"]),
         ("Олег", "Зимин", .Male, 22, ["014", "015"]),
         ("Никита", "Фралов", .Male, 23, ["016", "017", "018"]),
-        ("Ольга", "Cадовская", .Female, 24, ["019", "068", "069", "070"]),
+        ("Ольга", "Садовская", .Female, 24, ["019", "068", "069", "070"]),
         ("Виктор", "Блинов", .Male, 25, ["020", "021", "022", "023", "024", "025"]),
         ("Дмитрий", "Зотов", .Male, 26, ["026", "027"]),
         ("Наташа", "Лебедева", .Female, 27, ["028", "029"]),
@@ -76,24 +202,17 @@ func getUserArrayData() -> [User]? {
         return nil
     }
     
+    
     var users = [User]()
     
     for i in 0 ..< data.count {
-        let user = User(
-            firstName: data[i].0,
-            lastName: data[i].1,
-            gender: data[i].2,
-            age: data[i].3
-        )
-        
+        var user = User(firstName: data[i].0, lastName: data[i].1, gender: data[i].2, age: data[i].3)
+        user.setPhotos(arrayNameByPhotos: data[i].4)
         if i >= avatar.count {
-            user.avatar = ""
+            user.setAvatar(name: "")
         } else {
-            user.avatar = avatar[i]
+            user.setAvatar(name: avatar[i])
         }
-        
-        user.photos = data[i].4
-        
         users.append(user)
     }
     

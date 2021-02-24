@@ -68,7 +68,7 @@
                                         </state>
                                         <connections>
                                             <action selector="singinTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jM0-sx-vev"/>
-                                            <segue destination="zar-nd-bjg" kind="show" id="srG-2x-oCK"/>
+                                            <segue destination="zar-nd-bjg" kind="presentation" modalPresentationStyle="fullScreen" id="srG-2x-oCK"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -189,7 +189,13 @@
                             <outlet property="delegate" destination="Pp1-tT-P7R" id="DBv-Ml-O28"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Друзья" id="rur-pD-303"/>
+                    <navigationItem key="navigationItem" title="Друзья" id="rur-pD-303">
+                        <barButtonItem key="leftBarButtonItem" title="Выход" id="EER-Zp-BJK">
+                            <connections>
+                                <action selector="logOut:" destination="Pp1-tT-P7R" id="AzF-NK-7Yc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wCJ-J5-Kdk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -295,6 +301,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Группы" id="Vz2-Ah-hAg">
                         <barButtonItem key="backBarButtonItem" title="Группы" id="jQd-Ga-icO"/>
+                        <barButtonItem key="leftBarButtonItem" title="Выход" id="I3H-cM-kAq">
+                            <connections>
+                                <action selector="logOut:" destination="82R-5c-Glb" id="gZG-Cn-nU2"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="j2A-Q5-3OF">
                             <connections>
                                 <segue destination="5pX-Pu-GFe" kind="show" id="FZs-ZS-87Y"/>
@@ -362,7 +373,7 @@
                 <navigationController id="Jkn-dV-nGJ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Группы" image="person.3.fill" catalog="system" id="fSr-CX-MJ2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ulw-Sz-69D">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -379,7 +390,7 @@
                 <navigationController id="Fe1-Uh-zme" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Друзья" image="person.fill.checkmark" catalog="system" id="mp0-r9-Ulu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xSv-0e-ZCg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

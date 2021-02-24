@@ -25,4 +25,13 @@ class FrendTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    
+    func setupUser(user: User?) -> Void {
+        guard let frend = user else {
+            return
+        }
+        
+        self.fullNameLabel.text = frend.fullName
+        self.shadow.avatar.image = UIImage(named: frend.avatar ?? "VK_Compact_Logo")
+    }
 }

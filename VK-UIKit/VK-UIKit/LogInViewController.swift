@@ -102,8 +102,6 @@ class LogInViewController: UIViewController {
             loginTextField.text = ""
             passwordTextField.text = ""
             successful = true
-            
-            MyGroupsTableViewController.myGroups = getMyGroupData()
         } else {
             successful = false
         }
@@ -138,8 +136,9 @@ class LogInViewController: UIViewController {
     //  MARK:   - Actions
     //
     @IBAction func singinTouchUp(_ sender: UIButton) {
-
+   
     }
     
 }
+
 

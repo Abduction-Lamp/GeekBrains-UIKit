@@ -7,7 +7,8 @@
 
 import Foundation
 
-class Group {
+
+struct Group {
     
     var name: String
     var avatar: String?
@@ -16,7 +17,6 @@ class Group {
         self.name = name
     }
 }
-
 
 
 //  MARK:   - Protocol Equatable
@@ -30,9 +30,74 @@ extension Group : Equatable {
 
 
 
+class AllGroups {
+    
+    static var data = AllGroups()
+    
+    private var groups: [Group]? = getAllGroupData()
+    var count: Int {
+        return groups?.count ?? 0
+    }
+    
+    private init() { }
+    
+    func getGroup(id: Int) -> Group? {
+        return groups?[id]
+    }
+    
+    func remove(id: Int) -> Bool {
+        var flag = false
+        let count = groups?.count ?? 0
+        
+        if id <= count {
+            groups?.remove(at: id)
+            flag = true
+        }
+        return flag
+    }
+}
+
+
+class MyGroups {
+    
+    static var data = MyGroups()
+    
+    private var groups: [Group]? = getMyGroupData()
+    var count: Int {
+        return groups?.count ?? 0
+    }
+    
+    private init() { }
+    
+    func getGroup(id: Int) -> Group? {
+        return groups?[id]
+    }
+    
+    func remove(id: Int) -> Bool {   
+        var flag = false
+        let count = groups?.count ?? 0
+        
+        if id <= count {
+            groups?.remove(at: id)
+            flag = true
+        }
+        return flag
+    }
+    
+    func contains(group: Group) -> Bool {
+        return groups?.contains(group) ?? true
+    }
+    
+    func append(group: Group) -> Void{
+        groups?.append(group)
+    }
+}
+
+
+
 //  MARK:   - Get Data
 //
-func getGroupData() -> [Group]? {
+private func getAllGroupData() -> [Group]? {
     
     let data: [(name: String, avatar: String)] = [
         ("Все о телескопах", "GROUP-002-telescope"),
@@ -58,7 +123,7 @@ func getGroupData() -> [Group]? {
     var groups = [Group]()
     
     for i in 0 ..< data.count {
-        let group = Group(name: data[i].name)
+        var group = Group(name: data[i].name)
         group.avatar = data[i].avatar
         groups.append(group)
     }
@@ -67,11 +132,11 @@ func getGroupData() -> [Group]? {
 }
 
 
-func getMyGroupData() -> [Group]? {
+private func getMyGroupData() -> [Group]? {
     
     var groups = [Group]()
     
-    let group = Group(name: "«Поехали»! Российский космос")
+    var group = Group(name: "«Поехали»! Российский космос")
     group.avatar = "GROUP-033-astronaut"
     groups.append(group)
     

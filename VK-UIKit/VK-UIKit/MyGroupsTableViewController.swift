@@ -9,7 +9,7 @@ import UIKit
 
 class MyGroupsTableViewController: UITableViewController {
 
-    static var myGroups = getMyGroupData()
+//    static var myGroups = getMyGroupData()
     
     
     
@@ -36,15 +36,21 @@ class MyGroupsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return MyGroupsTableViewController.myGroups?.count ?? 0
+        return MyGroups.data.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyGroups", for: indexPath) as! MyGroupsTableViewCell
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyGroups", for: indexPath) as? MyGroupsTableViewCell else {
+            
+            return UITableViewCell()
+        }
 
-        cell.groupName.text = MyGroupsTableViewController.myGroups?[indexPath.row].name
-        cell.avatar.image = UIImage(named: MyGroupsTableViewController.myGroups?[indexPath.row].avatar ?? "VK_Compact_Logo")
+        cell.setData(
+            name: MyGroups.data.getGroup(id: indexPath.row)?.name ?? "",
+            avatarName: MyGroups.data.getGroup(id: indexPath.row)?.avatar ?? "VK_Compact_Logo"
+        )
         return cell
     }
     
@@ -62,8 +68,9 @@ class MyGroupsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            MyGroupsTableViewController.myGroups?.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            if MyGroups.data.remove(id: indexPath.row) {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -108,13 +115,20 @@ class MyGroupsTableViewController: UITableViewController {
             }
             
             if let index = allGroupTableViewController.tableView.indexPathForSelectedRow {
-                if let group = AllGroupsTableViewController.groups?[index.row] {
-                    if !(MyGroupsTableViewController.myGroups?.contains(group) ?? true) {
-                        MyGroupsTableViewController.myGroups?.append(group)
+                if let group = AllGroups.data.getGroup(id: index.row) {
+                    if !MyGroups.data.contains(group: group) {
+                        MyGroups.data.append(group: group)
                         self.tableView.reloadData()
                     }
                 }
             }
         }
     }
+    
+    
+    @IBAction func logOut(_ sender: UIBarButtonItem) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }

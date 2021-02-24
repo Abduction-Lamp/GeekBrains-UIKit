@@ -7,10 +7,7 @@
 
 import UIKit
 
-class AllGroupsTableViewController: UITableViewController {
-
-    static var groups = getGroupData()
-    
+class AllGroupsTableViewController: UITableViewController {    
     
     
     // MARK: - Life cycle
@@ -36,16 +33,22 @@ class AllGroupsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return AllGroupsTableViewController.groups?.count ?? 0
+        return AllGroups.data.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AllGroup", for: indexPath) as! AllGroupsTableViewCell
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllGroup", for: indexPath) as? AllGroupsTableViewCell else {
+            
+            return UITableViewCell()
+        }
 
-        cell.groupName.text = AllGroupsTableViewController.groups?[indexPath.row].name
-        cell.avatar.image = UIImage(named: AllGroupsTableViewController.groups?[indexPath.row].avatar ?? "VK_Compact_Logo")
-
+        cell.setData(
+            name: AllGroups.data.getGroup(id: indexPath.row)?.name ?? "",
+            avatarName: AllGroups.data.getGroup(id: indexPath.row)?.avatar ?? "VK_Compact_Logo"
+        )
+        
         return cell
     }
     

@@ -11,8 +11,8 @@ private let reuseIdentifier = "FrendPhoto"
 
 class FrendPhotoCollectionViewController: UICollectionViewController {
 
-    var userID: Int!
-    var countPhotos: Int!
+    private var userID: Int!
+    private var countPhotos: Int!
     
     
     
@@ -59,14 +59,11 @@ class FrendPhotoCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FrendPhotoCollectionViewCell
-    
-//        print(collectionView.frame.size)
-        
-        if let photo = FrendsTableViewController.frends?[self.userID].photos?[indexPath.row] {
-            cell.photoImageView.image = UIImage(named: photo)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? FrendPhotoCollectionViewCell else {
+            return UICollectionViewCell()
         }
-        
+
+        cell.setupUser(user: Frends.data.getUser(id: self.userID), indexPhoto: indexPath.row)
         return cell
     }
 
@@ -103,4 +100,11 @@ class FrendPhotoCollectionViewController: UICollectionViewController {
     }
     */
 
+    
+    // MARK: -
+    //
+    func setData(userID: Int, countPhotos: Int) -> Void {
+        self.userID = userID
+        self.countPhotos = countPhotos
+    }
 }
