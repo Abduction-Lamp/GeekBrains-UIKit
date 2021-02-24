@@ -25,9 +25,9 @@ class FrendsTableViewController: UITableViewController {
         
         Frends.data.sortByUp()
         
-        abcNavigationControl = ABCSortByControl(frame: self.view.bounds)
-        self.view.addSubview(abcNavigationControl)
-        self.view.bringSubviewToFront(abcNavigationControl)
+//        abcNavigationControl = ABCSortByControl(frame: self.view.bounds)
+//        self.view.addSubview(abcNavigationControl)
+//        self.view.bringSubviewToFront(abcNavigationControl)
     }
 
     
@@ -36,21 +36,28 @@ class FrendsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return Frends.data.countSectionsInfo
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return Frends.data.count
+        return Frends.data.getNumberOfRowsInSection(index: section) ?? 0
     }
 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return String(Frends.data.getLetterNameOfSection(index: section) ?? "0")
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FrendCell", for: indexPath) as? FrendTableViewCell else {
             return UITableViewCell()
         }
+        guard let startIndex = Frends.data.getDataStartIndexInSection(index: indexPath.section) else {
+            return UITableViewCell()
+        }
         
-        cell.setupUser(user: Frends.data.getUser(id: indexPath.row) ?? nil)
+        let frendId = startIndex + indexPath.row
+        cell.setupUser(user: Frends.data.getUser(id: frendId) ?? nil)
         
         return cell
     }
@@ -112,9 +119,15 @@ class FrendsTableViewController: UITableViewController {
         }
         
         if let index = source.tableView.indexPathForSelectedRow {
+            guard let startIndex = Frends.data.getDataStartIndexInSection(index: index.section) else {
+                return
+            }
+            
+            let frendId = startIndex + index.row
+            
             destination.setData(
-                userID: index.row,
-                countPhotos: Frends.data.getCountPhotosForUser(id: index.row)
+                userID: frendId,
+                countPhotos: Frends.data.getCountPhotosForUser(id: frendId)
             )
         }
     }

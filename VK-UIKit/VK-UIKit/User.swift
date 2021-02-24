@@ -68,8 +68,10 @@ class Frends {
         return frends?.count ?? 0
     }
     
-    private var sectionsInfo = [(name: Character, count: Int)]()
-    
+    private var sectionsInfo = [(name: Character, count: Int, dataStartIndex: Int)]()
+    var countSectionsInfo : Int {
+        return sectionsInfo.count
+    }
     
     
     // MARK: - Init
@@ -128,11 +130,21 @@ class Frends {
         return char
     }
     
+    func getDataStartIndexInSection(index: Int) -> Int? {
+        
+        var dataIndex: Int?
+        if index < sectionsInfo.count {
+            dataIndex = sectionsInfo[index].dataStartIndex
+        }
+        
+        return dataIndex
+    }
+    
     
     private func calculationSectionsInfo() {
         
         if frends != nil {
-            for frend in frends! {
+            for (dataStartIndex, frend) in frends!.enumerated() {
                 guard let char = frend.lastName.first else {
                     continue
                 }
@@ -140,10 +152,9 @@ class Frends {
                 if let index = checkLetterForPresence(char: char) {
                     sectionsInfo[index].count += 1
                 } else {
-                    let tuple = (name: char, count: 1)
+                    let tuple = (name: char, count: 1, dataStartIndex: dataStartIndex)
                     sectionsInfo.append(tuple)
                 }
-                
             }
         }
     }
