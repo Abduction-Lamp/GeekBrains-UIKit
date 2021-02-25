@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable
+//@IBDesignable
 class ShadowView: UIView {
 
     override class var layerClass: AnyClass {
@@ -21,28 +21,28 @@ class ShadowView: UIView {
     
     // MARK: - Inspectable Var
     //
-    @IBInspectable
+//    @IBInspectable
     var radius: CGFloat = 20 {
         didSet {
 //            setNeedsDisplay()
         }
     }
     
-    @IBInspectable
+//    @IBInspectable
     var shadowColor = UIColor.black {
         didSet {
 //            setNeedsDisplay()
         }
     }
     
-    @IBInspectable
+//    @IBInspectable
     var shadowOpacity: Float = 0.5 {
         didSet {
 //            setNeedsDisplay()
         }
     }
     
-    @IBInspectable
+//    @IBInspectable
     var shadowOffset = CGSize(width: 2, height: 1) {
         didSet {
 //            setNeedsDisplay()

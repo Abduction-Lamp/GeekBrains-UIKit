@@ -9,7 +9,15 @@ import UIKit
 
 class FrendsTableViewController: UITableViewController {
     
-    var abcNavigationControl: ABCSortByControl!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    
+    var filteredData: [User]?
+    var flag = false
+    
+//    var abcNavigationControl: ABCSortByControl!
+    
     
     
     //  MARK: - Life cycle
@@ -23,7 +31,13 @@ class FrendsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
+        
         Frends.data.sortByUp()
+        filteredData = Frends.data.copy()
+        
+        //
+        searchBar.delegate = self
+        
         
 //        abcNavigationControl = ABCSortByControl(frame: self.view.bounds)
 //        self.view.addSubview(abcNavigationControl)
@@ -36,16 +50,29 @@ class FrendsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return Frends.data.countSectionsInfo
+        var number = 1
+        if !flag {
+            number = Frends.data.countSectionsInfo
+        }
+        return number
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return Frends.data.getNumberOfRowsInSection(index: section) ?? 0
+        
+        var number = filteredData?.count ?? 0
+        if !flag {
+            number = Frends.data.getNumberOfRowsInSection(index: section) ?? 0
+        }
+        return number
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return String(Frends.data.getLetterNameOfSection(index: section) ?? "0")
+        var name: String? = nil
+        if !flag {
+            name = String(Frends.data.getLetterNameOfSection(index: section) ?? "0")
+        }
+        return name
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,9 +83,12 @@ class FrendsTableViewController: UITableViewController {
             return UITableViewCell()
         }
         
-        let frendId = startIndex + indexPath.row
-        cell.setupUser(user: Frends.data.getUser(id: frendId) ?? nil)
-        
+        if !flag {
+            let frendId = startIndex + indexPath.row
+            cell.setupUser(user: Frends.data.getUser(id: frendId) ?? nil)
+        } else {
+            cell.setupUser(user: filteredData?[indexPath.row])
+        }
         return cell
     }
     
@@ -119,16 +149,15 @@ class FrendsTableViewController: UITableViewController {
         }
         
         if let index = source.tableView.indexPathForSelectedRow {
-            guard let startIndex = Frends.data.getDataStartIndexInSection(index: index.section) else {
-                return
+            if !flag {
+                guard let startIndex = Frends.data.getDataStartIndexInSection(index: index.section) else {
+                    return
+                }
+                let id = startIndex + index.row
+                destination.setupData(user: Frends.data.getUser(id: id))
+            } else {
+                destination.setupData(user: filteredData![index.row])
             }
-            
-            let frendId = startIndex + index.row
-            
-            destination.setData(
-                userID: frendId,
-                countPhotos: Frends.data.getCountPhotosForUser(id: frendId)
-            )
         }
     }
 
@@ -136,5 +165,31 @@ class FrendsTableViewController: UITableViewController {
     @IBAction func logOut(_ sender: UIBarButtonItem) {
         
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+
+
+
+extension FrendsTableViewController : UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+        if searchText.isEmpty {
+            filteredData = Frends.data.copy()
+            flag = false
+        } else {
+            filteredData = Frends.data.copy()?.filter {
+                (item: User) -> Bool in
+                return item.fullName.range(
+                    of: searchText,
+                    options: .caseInsensitive,
+                    range: nil,
+                    locale: nil
+                ) != nil
+            }
+            flag = true
+        }
+        tableView.reloadData()
     }
 }

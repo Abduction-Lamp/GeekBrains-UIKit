@@ -57,6 +57,27 @@ struct User {
 }
 
 
+extension User : Equatable {
+    
+    static func == (lhs: User, rhs: User) -> Bool {
+        
+        var flag = false
+        
+        if lhs.fullName == rhs.fullName {
+            if lhs.gender == rhs.gender {
+                if lhs.age == rhs.age {
+                    if lhs.avatar == rhs.avatar {
+                        if lhs.photos == rhs.photos {
+                            flag = true
+                        }
+                    }
+                }
+            }
+        }
+        return flag
+    }
+}
+
 
 
 class Frends {
@@ -84,10 +105,6 @@ class Frends {
     //
     func getUser(id: Int) -> User? {
         return frends?[id]
-    }
-    
-    func getCountPhotosForUser(id: Int) -> Int {
-        return frends?[id].photos?.count ?? 0
     }
     
     
@@ -140,6 +157,14 @@ class Frends {
         return dataIndex
     }
     
+    func copy() -> [User]? {
+        return frends
+    }
+    
+    func getRealIndex(user: User) -> Int? {
+        
+        return frends?.firstIndex(of: user)
+    }
     
     private func calculationSectionsInfo() {
         
@@ -174,6 +199,16 @@ class Frends {
 }
 
 
+
+//class FrendsGlobalSingleton : Frends {
+//    
+//    static var data = FrendsGlobalSingleton()
+//
+//
+//    private override init() {
+//        super.init()
+//    }
+//}
 
 
 //  MARK:   - Get Data
