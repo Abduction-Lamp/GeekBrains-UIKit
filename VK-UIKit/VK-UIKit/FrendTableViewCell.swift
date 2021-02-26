@@ -21,7 +21,6 @@ class FrendTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 
@@ -30,7 +29,6 @@ class FrendTableViewCell: UITableViewCell {
         guard let frend = user else {
             return
         }
-        
         self.fullNameLabel.text = frend.fullName
         self.shadow.avatar.image = UIImage(named: frend.avatar ?? "VK_Compact_Logo")
     }

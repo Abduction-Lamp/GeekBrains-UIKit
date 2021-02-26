@@ -49,7 +49,6 @@ class FrendsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         var number = 1
         if !flag {
             number = Frends.data.countSectionsInfo
@@ -58,8 +57,6 @@ class FrendsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        
         var number = filteredData?.count ?? 0
         if !flag {
             number = Frends.data.getNumberOfRowsInSection(index: section) ?? 0
@@ -181,12 +178,7 @@ extension FrendsTableViewController : UISearchBarDelegate {
         } else {
             filteredData = Frends.data.copy()?.filter {
                 (item: User) -> Bool in
-                return item.fullName.range(
-                    of: searchText,
-                    options: .caseInsensitive,
-                    range: nil,
-                    locale: nil
-                ) != nil
+                return item.fullName.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
             }
             flag = true
         }

@@ -126,6 +126,7 @@
                     <connections>
                         <segue destination="Fe1-Uh-zme" kind="relationship" relationship="viewControllers" id="rec-kH-Hnd"/>
                         <segue destination="Jkn-dV-nGJ" kind="relationship" relationship="viewControllers" id="RgM-cT-vXV"/>
+                        <segue destination="Tuw-pn-aB4" kind="relationship" relationship="viewControllers" id="fYh-sB-kcJ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IK5-l9-iFJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -207,7 +208,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wCJ-J5-Kdk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2933.5999999999999" y="-234.23645320197045"/>
+            <point key="canvasLocation" x="2929" y="-607"/>
         </scene>
         <!--Фотографии-->
         <scene sceneID="quG-xa-e4R">
@@ -265,7 +266,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sxk-ze-THR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3880.8000000000002" y="-234.23645320197045"/>
+            <point key="canvasLocation" x="3881" y="-607"/>
         </scene>
         <!--Группы-->
         <scene sceneID="rEz-Qv-O8U">
@@ -323,7 +324,56 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thY-mc-Xyr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2933.5999999999999" y="463.30049261083747"/>
+            <point key="canvasLocation" x="2930" y="75"/>
+        </scene>
+        <!--Новости-->
+        <scene sceneID="Ecc-6b-RJT">
+            <objects>
+                <tableViewController id="d81-0l-Ku7" customClass="NewsTableViewController" customModule="VK_UIKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uS8-h3-ps9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="8gW-ts-ExF">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8gW-ts-ExF" id="3WG-xZ-edk">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="d81-0l-Ku7" id="ryf-ec-C6G"/>
+                            <outlet property="delegate" destination="d81-0l-Ku7" id="LTO-RB-km8"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Новости" id="u1u-jP-r0E"/>
+                    <connections>
+                        <outlet property="newsTabelView" destination="uS8-h3-ps9" id="eCQ-q9-ZYU"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HFr-oz-HsL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2928.8000000000002" y="813.54679802955673"/>
+        </scene>
+        <!--Новости-->
+        <scene sceneID="x4i-fs-eKi">
+            <objects>
+                <navigationController id="Tuw-pn-aB4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Новости" image="doc.richtext.fill" catalog="system" id="dLl-yR-dWj"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dRD-St-seL">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="d81-0l-Ku7" kind="relationship" relationship="rootViewController" id="j3A-14-C5c"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fGB-QL-81k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2009" y="815"/>
         </scene>
         <!--Глобальный поиск-->
         <scene sceneID="Ojr-FG-MAX">
@@ -333,9 +383,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="04p-eF-FUZ">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllGroup" id="b4e-wg-Pui" customClass="AllGroupsTableViewCell" customModule="VK_UIKit" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b4e-wg-Pui" id="vvx-cb-Nf2">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
@@ -369,11 +424,14 @@
                     <navigationItem key="navigationItem" title="Глобальный поиск" id="Xdd-IA-pT5">
                         <barButtonItem key="backBarButtonItem" title="Группы" id="HZg-7t-g5x"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="04p-eF-FUZ" id="tcG-ym-ueA"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OsO-NV-rbw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="eO8-uv-vaO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3880.8000000000002" y="462.5615763546798"/>
+            <point key="canvasLocation" x="3881" y="75"/>
         </scene>
         <!--Группы-->
         <scene sceneID="DSX-pM-x6b">
@@ -390,7 +448,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ucF-jC-ioj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2017" y="464"/>
+            <point key="canvasLocation" x="2009" y="75"/>
         </scene>
         <!--Друзья-->
         <scene sceneID="nz1-Yt-69j">
@@ -407,12 +465,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hO5-AQ-icH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2011" y="-234"/>
+            <point key="canvasLocation" x="2009" y="-607"/>
         </scene>
     </scenes>
     <resources>
         <image name="012" width="512" height="512"/>
         <image name="VK_Full_Logo" width="274" height="48"/>
+        <image name="doc.richtext.fill" catalog="system" width="115" height="128"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
         <image name="person.fill.checkmark" catalog="system" width="128" height="88"/>
         <namedColor name="AccentColor">

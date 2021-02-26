@@ -1,20 +1,20 @@
 //
-//  MyGroupsTableViewController.swift
+//  NewsTableViewController.swift
 //  VK-UIKit
 //
-//  Created by Владимир on 10.02.2021.
+//  Created by Владимир on 25.02.2021.
 //
 
 import UIKit
 
-class MyGroupsTableViewController: UITableViewController {
 
-//    static var myGroups = getMyGroupData()
+let newsCellReuseIdentifier = "NewsTableViewCell"
+
+class NewsTableViewController: UITableViewController {
+
+    @IBOutlet var newsTabelView: UITableView!
     
     
-    
-    // MARK: - Life cycle
-    //
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,10 +23,16 @@ class MyGroupsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        
+        newsTabelView.delegate = self
+        newsTabelView.dataSource = self
+        
+        newsTabelView.register(UINib(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: newsCellReuseIdentifier)
+        
+        
     }
 
-    
-    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -36,21 +42,17 @@ class MyGroupsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return MyGroups.data.count
+        return GlobalDataNews.data.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyGroups", for: indexPath) as? MyGroupsTableViewCell else {
-            
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: newsCellReuseIdentifier, for: indexPath) as? NewsTableViewCell else {
             return UITableViewCell()
         }
 
-        cell.setData(
-            name: MyGroups.data.getGroup(id: indexPath.row)?.name ?? "",
-            avatarName: MyGroups.data.getGroup(id: indexPath.row)?.avatar ?? "VK_Compact_Logo"
-        )
+        
+        cell.setup(news: GlobalDataNews.data.getNews(index: indexPath.row) ?? nil)
         return cell
     }
     
@@ -63,19 +65,17 @@ class MyGroupsTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
         if editingStyle == .delete {
-            if MyGroups.data.remove(id: indexPath.row) {
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            }
+            // Delete the row from the data source
+            tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    
+    */
 
     /*
     // Override to support rearranging the table view.
@@ -102,33 +102,4 @@ class MyGroupsTableViewController: UITableViewController {
     }
     */
 
-    
-    
-    // MARK: - Actions
-    //
-    @IBAction func addGroup(segue: UIStoryboardSegue) {
-        
-        if segue.identifier == "addGroup" {
-            
-            guard let allGroupTableViewController = segue.source as? AllGroupsTableViewController else {
-                return
-            }
-            
-            if let index = allGroupTableViewController.tableView.indexPathForSelectedRow {
-                if  let group = allGroupTableViewController.filteredData?[index.row] {
-                    if !MyGroups.data.contains(group: group) {
-                        MyGroups.data.append(group: group)
-                        self.tableView.reloadData()
-                    }
-                }
-            }
-        }
-    }
-    
-    
-    @IBAction func logOut(_ sender: UIBarButtonItem) {
-        
-        self.dismiss(animated: true, completion: nil)
-    }
-    
 }

@@ -55,6 +55,10 @@ class AllGroups {
         }
         return flag
     }
+    
+    func copy() -> [Group]? {
+        return groups
+    }
 }
 
 

@@ -9,6 +9,12 @@ import UIKit
 
 class AllGroupsTableViewController: UITableViewController {    
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var filteredData: [Group]?
+    var flag = false
+    var realIndex: Int!
+    
     
     // MARK: - Life cycle
     //
@@ -20,6 +26,10 @@ class AllGroupsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        filteredData = AllGroups.data.copy()
+        
+        searchBar.delegate = self
     }
 
     
@@ -33,7 +43,7 @@ class AllGroupsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return AllGroups.data.count
+        return filteredData?.count ?? 0
     }
 
     
@@ -45,9 +55,12 @@ class AllGroupsTableViewController: UITableViewController {
         }
 
         cell.setData(
-            name: AllGroups.data.getGroup(id: indexPath.row)?.name ?? "",
-            avatarName: AllGroups.data.getGroup(id: indexPath.row)?.avatar ?? "VK_Compact_Logo"
+//            name: AllGroups.data.getGroup(id: indexPath.row)?.name ?? "",
+//            avatarName: AllGroups.data.getGroup(id: indexPath.row)?.avatar ?? "VK_Compact_Logo"
+            name: filteredData?[indexPath.row].name ?? "",
+            avatarName: filteredData?[indexPath.row].avatar ?? "VK_Compact_Logo"
         )
+        
         
         return cell
     }
@@ -98,4 +111,23 @@ class AllGroupsTableViewController: UITableViewController {
     }
     */
 
+}
+
+
+extension AllGroupsTableViewController : UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+        if searchText.isEmpty {
+            filteredData = AllGroups.data.copy()
+            flag = false
+        } else {
+            filteredData = AllGroups.data.copy()?.filter {
+                (item: Group) -> Bool in
+                return item.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+            }
+            flag = true
+        }
+        tableView.reloadData()
+    }
 }

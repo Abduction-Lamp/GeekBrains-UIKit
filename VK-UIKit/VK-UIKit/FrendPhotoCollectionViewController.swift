@@ -43,15 +43,11 @@ class FrendPhotoCollectionViewController: UICollectionViewController {
     
     
     // MARK: - UICollectionViewDataSource
-
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return user.photos?.count ?? 0
     }
 
@@ -60,7 +56,7 @@ class FrendPhotoCollectionViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? FrendPhotoCollectionViewCell else {
             return UICollectionViewCell()
         }
-
+        
         cell.setupUser(user: user, indexPhoto: indexPath.row)
         return cell
     }
@@ -99,12 +95,15 @@ class FrendPhotoCollectionViewController: UICollectionViewController {
     */
 
     
-    // MARK: -
+    // MARK: - Methods
     //
-    
     func setupData(user: User?) -> Void {
+        
         if user != nil {
             self.user = user
+        } else {
+            self.user = User(firstName: "", lastName: "", gender: .Male, age: 0)
         }
     }
+    
 }
