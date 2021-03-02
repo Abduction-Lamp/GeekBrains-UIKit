@@ -14,7 +14,7 @@ class FrendsTableViewController: UITableViewController {
     
     
     var filteredData: [User]?
-    var flag = false
+    var searchBarInFocus = false
     
 //    var abcNavigationControl: ABCSortByControl!
     
@@ -50,7 +50,7 @@ class FrendsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         var number = 1
-        if !flag {
+        if !searchBarInFocus {
             number = Frends.data.countSectionsInfo
         }
         return number
@@ -58,7 +58,7 @@ class FrendsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var number = filteredData?.count ?? 0
-        if !flag {
+        if !searchBarInFocus {
             number = Frends.data.getNumberOfRowsInSection(index: section) ?? 0
         }
         return number
@@ -66,10 +66,19 @@ class FrendsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var name: String? = nil
-        if !flag {
+        if !searchBarInFocus {
             name = String(Frends.data.getLetterNameOfSection(index: section) ?? "0")
         }
         return name
+    }
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        var indexTitles: [String]? = nil
+        
+        if !searchBarInFocus {
+            indexTitles = Frends.data.getSectionIndexTitles()
+        }
+        return indexTitles
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,7 +89,7 @@ class FrendsTableViewController: UITableViewController {
             return UITableViewCell()
         }
         
-        if !flag {
+        if !searchBarInFocus {
             let frendId = startIndex + indexPath.row
             cell.setupUser(user: Frends.data.getUser(id: frendId) ?? nil)
         } else {
@@ -146,7 +155,7 @@ class FrendsTableViewController: UITableViewController {
         }
         
         if let index = source.tableView.indexPathForSelectedRow {
-            if !flag {
+            if !searchBarInFocus {
                 guard let startIndex = Frends.data.getDataStartIndexInSection(index: index.section) else {
                     return
                 }
@@ -174,13 +183,13 @@ extension FrendsTableViewController : UISearchBarDelegate {
 
         if searchText.isEmpty {
             filteredData = Frends.data.copy()
-            flag = false
+            searchBarInFocus = false
         } else {
             filteredData = Frends.data.copy()?.filter {
                 (item: User) -> Bool in
                 return item.fullName.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
             }
-            flag = true
+            searchBarInFocus = true
         }
         tableView.reloadData()
     }

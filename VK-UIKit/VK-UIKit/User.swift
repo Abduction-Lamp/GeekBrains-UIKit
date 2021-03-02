@@ -165,6 +165,17 @@ class Frends {
         return frends
     }
     
+    func getSectionIndexTitles() -> [String]? {
+        
+        var sectionIndexTitles = [String]()
+        for character in sectionsInfo {
+            sectionIndexTitles.append(String(character.name))
+        }
+        
+        return sectionIndexTitles
+    }
+    
+    
     func getRealIndex(user: User) -> Int? {
         
         return frends?.firstIndex(of: user)
