@@ -53,6 +53,8 @@ class AvatarView: UIView {
         self.addSubview(avatar)
     }
     
+    
+    
     func setAvatar(name: String) {
         self.avatar.image = UIImage(named: name)
     }

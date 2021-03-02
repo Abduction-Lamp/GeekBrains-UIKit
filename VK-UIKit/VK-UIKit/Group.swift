@@ -39,7 +39,9 @@ class AllGroups {
         return groups?.count ?? 0
     }
     
+    
     private init() { }
+    
     
     func getGroup(id: Int) -> Group? {
         return groups?[id]

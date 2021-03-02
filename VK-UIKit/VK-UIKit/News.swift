@@ -18,7 +18,7 @@ struct News {
     var commentNamber: Int
     var lookNamber: Int
     
-    
+    var isLiked = false
     
     func getAutorFullName() -> String {
         return autor.fullName
@@ -45,10 +45,21 @@ class GlobalDataNews {
     
     func getNews(index: Int) -> News? {
         var outputNews: News? = nil
-        if index < count {
+        if index >= 0 && index < news.count {
             outputNews = news[index]
         }
         return outputNews
+    }
+    
+    func setLike(index: Int) {
+        if index >= 0 && index < news.count {
+            news[index].isLiked = !news[index].isLiked
+            if news[index].isLiked {
+                news[index].likeNamber += 1
+            } else {
+                news[index].likeNamber -= 1
+            }
+        }
     }
 }
 
@@ -80,7 +91,7 @@ private func getGlobalDataNews() -> [News] {
     
     if text.count == img.count && autor.count == text.count {
         for i in 0 ..< text.count {
-            let news = News(autor: Frends.data.getUser(id: autor[i])!, textNews: text[i], photo: img[i], likeNamber: Int.random(in: 0...10), commentNamber: Int.random(in: 0...10), lookNamber: Int.random(in: 10...100))
+            let news = News(autor: Frends.data.getUser(id: autor[i])!, textNews: text[i], photo: img[i], likeNamber: i, commentNamber: i, lookNamber: Int.random(in: i+10 ... 300))
             outputData.append(news)
         }
     }

@@ -51,8 +51,7 @@ class NewsTableViewController: UITableViewController {
             return UITableViewCell()
         }
 
-        
-        cell.setup(news: GlobalDataNews.data.getNews(index: indexPath.row) ?? nil)
+        cell.setup(id: indexPath.row, news: GlobalDataNews.data.getNews(index: indexPath.row) ?? nil)
         return cell
     }
     

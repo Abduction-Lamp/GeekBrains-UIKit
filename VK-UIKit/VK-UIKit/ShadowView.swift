@@ -21,34 +21,10 @@ class ShadowView: UIView {
     
     // MARK: - Inspectable Var
     //
-//    @IBInspectable
-    var radius: CGFloat = 20 {
-        didSet {
-//            setNeedsDisplay()
-        }
-    }
-    
-//    @IBInspectable
-    var shadowColor = UIColor.black {
-        didSet {
-//            setNeedsDisplay()
-        }
-    }
-    
-//    @IBInspectable
-    var shadowOpacity: Float = 0.5 {
-        didSet {
-//            setNeedsDisplay()
-        }
-    }
-    
-//    @IBInspectable
-    var shadowOffset = CGSize(width: 2, height: 1) {
-        didSet {
-//            setNeedsDisplay()
-        }
-    }
-    
+    var radius: CGFloat = 20
+    var shadowColor = UIColor.black
+    var shadowOpacity: Float = 0.5
+    var shadowOffset = CGSize(width: 2, height: 1)
     
     
     // MARK: -
@@ -61,7 +37,13 @@ class ShadowView: UIView {
         let maskLayer = CAShapeLayer()
         
         let objPath = UIBezierPath()
-        objPath.addArc(withCenter: CGPoint(x: radius+1, y: 22), radius: radius, startAngle: 0, endAngle: 360, clockwise: true)
+        objPath.addArc(
+            withCenter: CGPoint(x: radius+1, y: 22),
+            radius: radius,
+            startAngle: 0,
+            endAngle: 360,
+            clockwise: true
+        )
         maskLayer.path = objPath.cgPath
         maskLayer.shadowOpacity = shadowOpacity
         maskLayer.shadowOffset = shadowOffset

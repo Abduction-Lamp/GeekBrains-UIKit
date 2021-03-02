@@ -104,7 +104,11 @@ class Frends {
     // MARK: - Methods
     //
     func getUser(id: Int) -> User? {
-        return frends?[id]
+        if id < frends?.count ?? 0 {
+            return frends?[id]
+        } else {
+            return nil
+        }
     }
     
     

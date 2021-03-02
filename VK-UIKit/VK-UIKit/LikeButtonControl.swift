@@ -13,8 +13,8 @@ class LikeButtonControl: UIControl {
     var button = UIButton(type: .custom)
     var label = UILabel()
     
-    let imgNoLike = UIImage(named: "heart-7")
-    let imgLike = UIImage(named: "heart-6")
+    let imgNoLike = UIImage(named: "heart-3")
+    let imgLike = UIImage(named: "heart-1")
     
     var flag = false
     var likeCount = 0 {
