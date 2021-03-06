@@ -11,7 +11,7 @@ class FrendTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var fullNameLabel: UILabel!
-    @IBOutlet weak var shadow: ShadowView!
+    @IBOutlet weak var avatarView: VLAvatarView!
     
     
     override func awakeFromNib() {
@@ -29,7 +29,8 @@ class FrendTableViewCell: UITableViewCell {
         guard let frend = user else {
             return
         }
+        
         self.fullNameLabel.text = frend.fullName
-        self.shadow.avatar.image = UIImage(named: frend.avatar ?? "VK_Compact_Logo")
+        self.avatarView.setAvatar(name: frend.avatar ?? "VK_Compact_Logo")
     }
 }

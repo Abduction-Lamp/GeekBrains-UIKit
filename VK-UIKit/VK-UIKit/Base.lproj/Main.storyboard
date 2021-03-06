@@ -148,43 +148,45 @@
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FrendCell" id="IjE-Pa-PUD" customClass="FrendTableViewCell" customModule="VK_UIKit" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="375" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="44.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IjE-Pa-PUD" id="zIN-ek-TGF">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Иван Иванов" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPb-QF-rl4">
-                                            <rect key="frame" x="68" y="0.0" width="290" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <color key="textColor" red="0.12941176470588234" green="0.43529411764705883" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yb8-1R-Mdj" customClass="ShadowView" customModule="VK_UIKit" customModuleProvider="target">
-                                            <rect key="frame" x="16" y="0.0" width="50" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ywf-ZF-ESo">
-                                                    <rect key="frame" x="0.0" y="1" width="42" height="42"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                            </subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yb8-1R-Mdj" customClass="VLAvatarView" customModule="VK_UIKit" customModuleProvider="target">
+                                            <rect key="frame" x="5" y="0.0" width="55" height="44.333333333333336"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="55" id="0Aa-R9-nXi"/>
+                                                <constraint firstAttribute="height" constant="44" id="lZJ-mk-BaM"/>
+                                            </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="radius">
                                                     <real key="value" value="20"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <outlet property="avatar" destination="ywf-ZF-ESo" id="S4m-M6-woO"/>
-                                            </connections>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Иван Иванов" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPb-QF-rl4">
+                                            <rect key="frame" x="68" y="0.0" width="307" height="44.333333333333336"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" red="0.12941176470588234" green="0.43529411764705883" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Yb8-1R-Mdj" firstAttribute="leading" secondItem="zIN-ek-TGF" secondAttribute="leading" constant="5" id="1VC-al-Obi"/>
+                                        <constraint firstAttribute="bottom" secondItem="TPb-QF-rl4" secondAttribute="bottom" id="cCZ-pz-jF2"/>
+                                        <constraint firstAttribute="trailing" secondItem="TPb-QF-rl4" secondAttribute="trailing" id="cKH-vB-fl3"/>
+                                        <constraint firstAttribute="bottom" secondItem="Yb8-1R-Mdj" secondAttribute="bottom" id="dSu-27-b1Y"/>
+                                        <constraint firstItem="TPb-QF-rl4" firstAttribute="leading" secondItem="Yb8-1R-Mdj" secondAttribute="trailing" constant="8" symbolic="YES" id="eDy-oU-KoL"/>
+                                        <constraint firstItem="TPb-QF-rl4" firstAttribute="top" secondItem="zIN-ek-TGF" secondAttribute="top" id="i0h-hf-IV4"/>
+                                        <constraint firstItem="Yb8-1R-Mdj" firstAttribute="top" secondItem="zIN-ek-TGF" secondAttribute="top" id="jjs-qD-0BY"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="avatarView" destination="Yb8-1R-Mdj" id="wKy-tZ-Uz5"/>
                                     <outlet property="fullNameLabel" destination="TPb-QF-rl4" id="alk-wr-58w"/>
-                                    <outlet property="shadow" destination="Yb8-1R-Mdj" id="3mn-8D-tm5"/>
                                     <segue destination="KlB-jH-Cei" kind="show" identifier="SegueFromFrendsTableToFrendPhoto" id="Prc-XW-ZYe"/>
                                 </connections>
                             </tableViewCell>
@@ -208,7 +210,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wCJ-J5-Kdk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2929" y="-607"/>
+            <point key="canvasLocation" x="2928.8000000000002" y="-607.38916256157643"/>
         </scene>
         <!--Фотографии-->
         <scene sceneID="quG-xa-e4R">
@@ -232,13 +234,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="012" translatesAutoresizingMaskIntoConstraints="NO" id="5bg-Ku-KUZ">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yUc-cL-MWg" customClass="ImageWithLoadingAnimationView" customModule="VK_UIKit" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="150" id="nf3-kn-bC5"/>
-                                                <constraint firstAttribute="height" constant="150" id="npH-uF-zWA"/>
+                                                <constraint firstAttribute="height" constant="150" id="n0e-J6-mp3"/>
+                                                <constraint firstAttribute="width" constant="150" id="piG-Rk-lL8"/>
                                             </constraints>
-                                        </imageView>
+                                        </view>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yBQ-de-G4T" customClass="LikeButtonControl" customModule="VK_UIKit" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="120" width="150" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -246,14 +249,14 @@
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="5bg-Ku-KUZ" firstAttribute="leading" secondItem="foP-Mn-Mtt" secondAttribute="leading" id="UbE-T0-d4M"/>
-                                        <constraint firstAttribute="bottom" secondItem="5bg-Ku-KUZ" secondAttribute="bottom" id="Vrm-IU-iBq"/>
-                                        <constraint firstAttribute="trailing" secondItem="5bg-Ku-KUZ" secondAttribute="trailing" id="aAD-3y-wkE"/>
-                                        <constraint firstItem="5bg-Ku-KUZ" firstAttribute="top" secondItem="foP-Mn-Mtt" secondAttribute="top" id="swF-jy-FaP"/>
+                                        <constraint firstItem="yUc-cL-MWg" firstAttribute="top" secondItem="foP-Mn-Mtt" secondAttribute="top" id="Ve8-iF-TSi"/>
+                                        <constraint firstItem="yUc-cL-MWg" firstAttribute="leading" secondItem="foP-Mn-Mtt" secondAttribute="leading" id="nRd-LG-qlZ"/>
+                                        <constraint firstAttribute="bottom" secondItem="yUc-cL-MWg" secondAttribute="bottom" id="rAS-4G-9oZ"/>
+                                        <constraint firstAttribute="trailing" secondItem="yUc-cL-MWg" secondAttribute="trailing" id="rFI-R2-0ip"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <connections>
-                                    <outlet property="photoImageView" destination="5bg-Ku-KUZ" id="pE3-1w-5b7"/>
+                                    <outlet property="photoImageView" destination="yUc-cL-MWg" id="q5C-DA-yQs"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -357,6 +360,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HFr-oz-HsL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2928.8000000000002" y="813.54679802955673"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="WxE-lZ-Ahs">
+            <objects>
+                <tableViewController id="wkH-BD-jhl" customClass="TestClassTableViewController" customModule="VK_UIKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oYa-c4-Wn4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TestClassCell" id="SM2-Qe-W0s">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SM2-Qe-W0s" id="tKq-aK-Gg5">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="wkH-BD-jhl" id="fqN-Uc-Zlf"/>
+                            <outlet property="delegate" destination="wkH-BD-jhl" id="5Ry-aN-Ki9"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="ZE9-Zo-RUe"/>
+                    <connections>
+                        <outlet property="table" destination="oYa-c4-Wn4" id="UIv-In-Q5I"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="10d-bN-zHc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="953" y="814"/>
         </scene>
         <!--Новости-->
         <scene sceneID="x4i-fs-eKi">
@@ -469,7 +504,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="012" width="512" height="512"/>
         <image name="VK_Full_Logo" width="274" height="48"/>
         <image name="doc.richtext.fill" catalog="system" width="115" height="128"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>

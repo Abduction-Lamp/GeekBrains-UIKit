@@ -10,11 +10,16 @@ import UIKit
 
 class NewsTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var avatarView: AvatarView!
+    @IBOutlet weak var contentStackView: UIStackView!
+    
+    @IBOutlet weak var avatarView: VLAvatarView!
     @IBOutlet weak var fullNameLabel: UILabel!
     
     @IBOutlet weak var newsTextView: UITextView!
-    @IBOutlet weak var newsImageView: UIImageView!
+    
+    @IBOutlet weak var newsImageView: ImageWithLoadingAnimationView!
+//    var loadingAnimationView: LoadingAnimationView!
+    
     
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var commentButton: UIButton!
@@ -28,7 +33,7 @@ class NewsTableViewCell: UITableViewCell {
     let imgComment = UIImage(named: "comments")?.withRenderingMode(.alwaysOriginal)
     let imgLook = UIImage(named: "irritation")?.withRenderingMode(.alwaysOriginal)
     
-    
+    var flag = false
     var userId: Int?
     
     var likeCount = 0 {
@@ -56,6 +61,20 @@ class NewsTableViewCell: UITableViewCell {
         
         self.commentButton.setImage(self.imgComment, for: .normal)
         self.lookButton.setImage(self.imgLook, for: .normal)
+//        self.likeButton.layer.shadowOpacity = 0
+
+        
+        
+//        self.newsImageView = ImageWithLoadingAnimationView(
+//            frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.width)
+//        )
+//        self.contentStackView.insertArrangedSubview(self.newsImageView, at: 2)
+//        self.contentStackView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        self.newsImageView.leadingAnchor.constraint(equalTo: self.contentStackView.leadingAnchor).isActive = true
+//        self.newsImageView.trailingAnchor.constraint(equalTo: self.contentStackView.trailingAnchor).isActive = true
+//        self.newsImageView.heightAnchor.constraint(equalToConstant: self.contentStackView.bounds.width).isActive = true
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -77,8 +96,8 @@ class NewsTableViewCell: UITableViewCell {
         self.fullNameLabel.text = new.getAutorFullName()
   
         self.newsTextView.text = new.textNews
-        self.newsImageView.image = UIImage(named: new.photo)
-        
+        self.newsImageView.setImage(name: new.photo)
+
         self.likeCount = new.likeNamber
         self.commentCount = new.commentNamber
         self.lookCount = new.lookNamber
@@ -98,10 +117,13 @@ class NewsTableViewCell: UITableViewCell {
         super.prepareForReuse()
 
         self.fullNameLabel.text = nil
-//        self.avatarView.setAvatar(name: "")
+        self.avatarView.setAvatar(name: "")
+        
         self.newsTextView.text = nil
-        self.newsImageView.image = nil
-
+        
+        self.newsImageView.setImage(name: nil)
+        self.newsImageView.isLoaded = false
+        
         self.likeButton.imageView?.image = nil
         self.likeLabel.textColor = nil
         self.likeLabel.text = nil
@@ -119,12 +141,44 @@ class NewsTableViewCell: UITableViewCell {
         
         if let user = GlobalDataNews.data.getNews(index: id) {
             if user.isLiked {
-                self.likeButton.setImage(self.imgNoLike, for: .normal)
-                self.likeLabel.textColor = .black
+                UIView.transition(
+                    with: likeButton,
+                    duration: 1.0,
+                    options: [.transitionCurlUp, .curveEaseOut],
+                    animations: {
+                        self.likeButton.setImage(self.imgNoLike, for: .normal)
+                    },
+                    completion: nil
+                )
+                UIView.transition(
+                    with: likeLabel,
+                    duration: 1.0,
+                    options: [.transitionCurlUp, .curveEaseOut],
+                    animations: {
+                        self.likeLabel.textColor = .black
+                    },
+                    completion: nil
+                )
                 likeCount -= 1
             } else {
-                self.likeButton.setImage(self.imgLike, for: .normal)
-                self.likeLabel.textColor = .systemRed
+                UIView.transition(
+                    with: likeButton,
+                    duration: 1.0,
+                    options: [.transitionCurlDown, .curveEaseOut],
+                    animations: {
+                        self.likeButton.setImage(self.imgLike, for: .normal)
+                    },
+                    completion: nil
+                )
+                UIView.transition(
+                    with: likeLabel,
+                    duration: 1.0,
+                    options: [.transitionCurlDown, .curveEaseOut],
+                    animations: {
+                        self.likeLabel.textColor = .systemRed
+                    },
+                    completion: nil
+                )
                 likeCount += 1
             }
             GlobalDataNews.data.setLike(index: id)

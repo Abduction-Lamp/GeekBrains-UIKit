@@ -19,7 +19,7 @@ class LikeButtonControl: UIControl {
     var flag = false
     var likeCount = 0 {
         didSet {
-            label.text = "\(likeCount)"
+            self.label.text = "\(self.likeCount)"
             flag = !flag
         }
     }
@@ -81,14 +81,70 @@ class LikeButtonControl: UIControl {
         switch flag {
         case true:
             self.likeCount -= 1
-            self.button.setImage(imgNoLike, for: .normal)
-            self.label.textColor = UIColor.black
+            UIView.transition(
+                with: button,
+                duration: 0.2,
+                options: [.transitionCrossDissolve, .curveEaseOut],
+                animations: {
+                    self.button.setImage(self.imgNoLike, for: .normal)
+                },
+                completion: { _ in
+                    let springAnimation = CASpringAnimation(keyPath: "transform.scale")
+
+                    springAnimation.fromValue = 0.7
+                    springAnimation.toValue = 1
+                    springAnimation.stiffness = 300
+                    springAnimation.mass = 0.2
+                    springAnimation.duration = 0.2
+                    
+                    self.button.layer.add(springAnimation, forKey: nil)
+                }
+            )
+            
+            UIView.transition(
+                with: label,
+                duration: 0.2,
+                options: [.transitionCrossDissolve, .curveEaseOut],
+                animations: {
+                    self.label.textColor = UIColor.black
+                },
+                completion: nil
+            )
+
             
         case false:
             self.likeCount += 1
-            self.button.setImage(imgLike, for: .normal)
-            self.label.textColor = UIColor.red
+            UIView.transition(
+                with: button,
+                duration: 0.5,
+                options: [.transitionCrossDissolve, .curveEaseInOut],
+                animations: {
+                    self.button.setImage(self.imgLike, for: .normal)
+                },
+                completion: { _ in
+                    let springAnimation = CASpringAnimation(keyPath: "transform.scale")
+
+                    springAnimation.fromValue = 0.7
+                    springAnimation.toValue = 1
+                    springAnimation.stiffness = 300
+                    springAnimation.mass = 0.2
+                    springAnimation.duration = 0.2
+                    
+                    self.button.layer.add(springAnimation, forKey: nil)
+                }
+                
+            )
+            UIView.transition(
+                with: label,
+                duration: 0.2,
+                options: [.transitionCrossDissolve, .curveEaseOut],
+                animations: {
+                    self.label.textColor = UIColor.red
+                },
+                completion: nil
+            )
         }
+        
     }
 
 }

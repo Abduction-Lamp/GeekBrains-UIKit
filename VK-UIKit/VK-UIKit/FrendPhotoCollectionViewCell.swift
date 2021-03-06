@@ -10,7 +10,7 @@ import UIKit
 class FrendPhotoCollectionViewCell: UICollectionViewCell {
 
     
-    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var photoImageView: ImageWithLoadingAnimationView!
     
     
     // MARK: - Methods
@@ -20,8 +20,11 @@ class FrendPhotoCollectionViewCell: UICollectionViewCell {
             return
         }
         
+        
         if let photo = frend.photos?[indexPhoto] {
-            self.photoImageView.image = UIImage(named: photo)
+            self.photoImageView.setImage(name: photo)
         }
+        
+        
     }
 }
