@@ -19,9 +19,8 @@ class ShowPhotoScreenSegue: UIStoryboardSegue {
         }
         
         photoScreenViewController.user = photoCollectionViewController.user
-        
-        // MARK: - FIXME
-        //                  Тут нужно как-то добраться до номера ячейки с которой сделан переход
+        photoScreenViewController.currentPhotoID = photoCollectionViewController.selectPhotoID ?? 0
+
         
         
         super.perform()

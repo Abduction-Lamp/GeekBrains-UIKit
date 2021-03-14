@@ -257,7 +257,6 @@
                                 </collectionViewCellContentView>
                                 <connections>
                                     <outlet property="photoImageView" destination="yUc-cL-MWg" id="q5C-DA-yQs"/>
-                                    <segue destination="sIR-tU-Pov" kind="show" customClass="ShowPhotoScreenSegue" customModule="VK_UIKit" customModuleProvider="target" id="ge9-X3-y67"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -267,6 +266,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Фотографии" id="2K4-vR-Uic"/>
+                    <connections>
+                        <segue destination="sIR-tU-Pov" kind="show" identifier="SegueFromFrendsPhotoCellToScreenPhoto" customClass="ShowPhotoScreenSegue" customModule="VK_UIKit" customModuleProvider="target" id="eh4-wv-Y2X"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sxk-ze-THR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -12,7 +12,7 @@ private let reuseIdentifier = "FrendPhoto"
 class FrendPhotoCollectionViewController: UICollectionViewController {
 
     var user: User!
-    
+    var selectPhotoID: Int? = nil
     
     //  MARK:   - Life cycle
     //
@@ -69,6 +69,13 @@ class FrendPhotoCollectionViewController: UICollectionViewController {
     
     // MARK: - UICollectionViewDelegate
 
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        self.selectPhotoID = indexPath.row
+        self.performSegue(withIdentifier: "SegueFromFrendsPhotoCellToScreenPhoto", sender: self)
+    }
+    
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
