@@ -143,17 +143,17 @@ class FrendsTableViewController: UITableViewController {
         guard segue.identifier == "SegueFromFrendsTableToFrendPhoto" else {
             return
         }
-        
+
         //  Источник данных (экземпляр класса FrendsTableViewController)
         guard let source = segue.source as? FrendsTableViewController else {
             return
         }
-        
+
         //  Получатель данных (экземпляр класса FrendPhotoCollectionViewController)
         guard let destination = segue.destination as? FrendPhotoCollectionViewController else {
             return
         }
-        
+
         if let index = source.tableView.indexPathForSelectedRow {
             if !searchBarInFocus {
                 guard let startIndex = Frends.data.getDataStartIndexInSection(index: index.section) else {
@@ -165,6 +165,36 @@ class FrendsTableViewController: UITableViewController {
                 destination.setupData(user: filteredData![index.row])
             }
         }
+        
+        
+//            guard segue.identifier == "111" else {
+//                return
+//            }
+//
+//            //  Источник данных (экземпляр класса FrendsTableViewController)
+//            guard let source = segue.source as? FrendsTableViewController else {
+//                return
+//            }
+//
+//            //  Получатель данных (экземпляр класса FrendPhotoCollectionViewController)
+//            guard let destination = segue.destination as? PhotoScreenViewController else {
+//                return
+//            }
+//
+//
+//            if let index = source.tableView.indexPathForSelectedRow {
+//                if !searchBarInFocus {
+//                    guard let startIndex = Frends.data.getDataStartIndexInSection(index: index.section) else
+//                    {
+//                        return
+//                    }
+//                    let id = startIndex + index.row
+//                    destination.setUser(user: Frends.data.getUser(id: id))
+//                } else {
+//                    destination.setUser(user: filteredData![index.row])
+//                }
+//            }
+        
     }
 
     

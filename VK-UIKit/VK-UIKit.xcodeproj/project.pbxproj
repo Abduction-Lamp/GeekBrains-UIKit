@@ -19,6 +19,7 @@
 		4E53E19825CAA7750083DD3E /* VK_UIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E53E19725CAA7750083DD3E /* VK_UIKitTests.swift */; };
 		4E53E1A325CAA7750083DD3E /* VK_UIKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E53E1A225CAA7750083DD3E /* VK_UIKitUITests.swift */; };
 		4E5ED17B25E918AA00D074CA /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5ED17A25E918AA00D074CA /* News.swift */; };
+		4E96E13825F52D3000D075D7 /* PhotoScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E96E13725F52D3000D075D7 /* PhotoScreenViewController.swift */; };
 		4EAB58B025D3E8DA00C6FF57 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB58AF25D3E8DA00C6FF57 /* User.swift */; };
 		4EAB58B525D3EBAF00C6FF57 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB58B425D3EBAF00C6FF57 /* Group.swift */; };
 		4EAB58BC25D3FE5D00C6FF57 /* FrendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB58BB25D3FE5D00C6FF57 /* FrendsTableViewController.swift */; };
@@ -32,7 +33,12 @@
 		4EAEEBE225E7D8F4001D70E8 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAEEBE025E7D8F4001D70E8 /* NewsTableViewCell.swift */; };
 		4EAEEBE325E7D8F4001D70E8 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EAEEBE125E7D8F4001D70E8 /* NewsTableViewCell.xib */; };
 		4EAEEBE825E7DE7B001D70E8 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAEEBE725E7DE7B001D70E8 /* NewsTableViewController.swift */; };
+		4EBD781325FBA1CD00B236CE /* CustomPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBD781225FBA1CD00B236CE /* CustomPushAnimator.swift */; };
+		4EBD781825FBB1DE00B236CE /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBD781725FBB1DE00B236CE /* CustomNavigationController.swift */; };
+		4EBD781D25FBB39F00B236CE /* CustomPopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBD781C25FBB39F00B236CE /* CustomPopAnimator.swift */; };
+		4EBD782825FCE75500B236CE /* CustomInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBD782725FCE75500B236CE /* CustomInteractiveTransition.swift */; };
 		4EE45FA925F375350048FFFC /* ImageWithLoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE45FA825F375350048FFFC /* ImageWithLoadingAnimationView.swift */; };
+		4EF3C63F25FA789C007D8526 /* ShowPhotoScreenSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF3C63E25FA789C007D8526 /* ShowPhotoScreenSegue.swift */; };
 		4EF7732C25F03B9D00CE3BCE /* VLAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7732B25F03B9D00CE3BCE /* VLAvatarView.swift */; };
 		4EFC498125EFAB5E00289B06 /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC498025EFAB5E00289B06 /* LoadingAnimationView.swift */; };
 /* End PBXBuildFile section */
@@ -73,6 +79,7 @@
 		4E53E1A225CAA7750083DD3E /* VK_UIKitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VK_UIKitUITests.swift; sourceTree = "<group>"; };
 		4E53E1A425CAA7750083DD3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E5ED17A25E918AA00D074CA /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		4E96E13725F52D3000D075D7 /* PhotoScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoScreenViewController.swift; sourceTree = "<group>"; };
 		4EAB58AF25D3E8DA00C6FF57 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4EAB58B425D3EBAF00C6FF57 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		4EAB58BB25D3FE5D00C6FF57 /* FrendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrendsTableViewController.swift; sourceTree = "<group>"; };
@@ -86,7 +93,12 @@
 		4EAEEBE025E7D8F4001D70E8 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		4EAEEBE125E7D8F4001D70E8 /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 		4EAEEBE725E7DE7B001D70E8 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		4EBD781225FBA1CD00B236CE /* CustomPushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushAnimator.swift; sourceTree = "<group>"; };
+		4EBD781725FBB1DE00B236CE /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		4EBD781C25FBB39F00B236CE /* CustomPopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopAnimator.swift; sourceTree = "<group>"; };
+		4EBD782725FCE75500B236CE /* CustomInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInteractiveTransition.swift; sourceTree = "<group>"; };
 		4EE45FA825F375350048FFFC /* ImageWithLoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWithLoadingAnimationView.swift; sourceTree = "<group>"; };
+		4EF3C63E25FA789C007D8526 /* ShowPhotoScreenSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPhotoScreenSegue.swift; sourceTree = "<group>"; };
 		4EF7732B25F03B9D00CE3BCE /* VLAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VLAvatarView.swift; sourceTree = "<group>"; };
 		4EFC498025EFAB5E00289B06 /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,7 +160,7 @@
 		4E53E17F25CAA7730083DD3E /* VK-UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				4E1A1D3425F238DB00F3B7A9 /* TestClass */,
+				4EBD781125FBA0FD00B236CE /* Custom Animation NavigationController */,
 				4EFC497F25EFAAEE00289B06 /* Other custom views */,
 				4EAEEBDF25E7D8A7001D70E8 /* News */,
 				4EAB58C825D42EE400C6FF57 /* Groups */,
@@ -161,6 +173,7 @@
 				4E53E18925CAA7750083DD3E /* Assets.xcassets */,
 				4E53E18B25CAA7750083DD3E /* LaunchScreen.storyboard */,
 				4E53E18E25CAA7750083DD3E /* Info.plist */,
+				4E1A1D3425F238DB00F3B7A9 /* TestClass */,
 			);
 			path = "VK-UIKit";
 			sourceTree = "<group>";
@@ -200,6 +213,8 @@
 				4EAB58C325D3FE8100C6FF57 /* FrendTableViewCell.swift */,
 				4EAB58E325D445C400C6FF57 /* FrendPhotoCollectionViewController.swift */,
 				4EAB58E825D445E300C6FF57 /* FrendPhotoCollectionViewCell.swift */,
+				4E96E13725F52D3000D075D7 /* PhotoScreenViewController.swift */,
+				4EF3C63E25FA789C007D8526 /* ShowPhotoScreenSegue.swift */,
 			);
 			name = Frends;
 			sourceTree = "<group>";
@@ -223,6 +238,17 @@
 				4EAEEBE725E7DE7B001D70E8 /* NewsTableViewController.swift */,
 			);
 			name = News;
+			sourceTree = "<group>";
+		};
+		4EBD781125FBA0FD00B236CE /* Custom Animation NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				4EBD781725FBB1DE00B236CE /* CustomNavigationController.swift */,
+				4EBD781225FBA1CD00B236CE /* CustomPushAnimator.swift */,
+				4EBD781C25FBB39F00B236CE /* CustomPopAnimator.swift */,
+				4EBD782725FCE75500B236CE /* CustomInteractiveTransition.swift */,
+			);
+			name = "Custom Animation NavigationController";
 			sourceTree = "<group>";
 		};
 		4EFC497F25EFAAEE00289B06 /* Other custom views */ = {
@@ -368,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E1A1D3625F238FE00F3B7A9 /* TestClassTableViewCell.swift in Sources */,
+				4EF3C63F25FA789C007D8526 /* ShowPhotoScreenSegue.swift in Sources */,
 				4EAB58B025D3E8DA00C6FF57 /* User.swift in Sources */,
 				4EAB58D225D42F6700C6FF57 /* MyGroupsTableViewController.swift in Sources */,
 				4E53E18525CAA7730083DD3E /* LogInViewController.swift in Sources */,
@@ -377,13 +404,18 @@
 				4EAB58B525D3EBAF00C6FF57 /* Group.swift in Sources */,
 				4EAB58E425D445C400C6FF57 /* FrendPhotoCollectionViewController.swift in Sources */,
 				4EAEEBE825E7DE7B001D70E8 /* NewsTableViewController.swift in Sources */,
+				4EBD782825FCE75500B236CE /* CustomInteractiveTransition.swift in Sources */,
 				4EE45FA925F375350048FFFC /* ImageWithLoadingAnimationView.swift in Sources */,
+				4EBD781825FBB1DE00B236CE /* CustomNavigationController.swift in Sources */,
+				4E96E13825F52D3000D075D7 /* PhotoScreenViewController.swift in Sources */,
 				4EAB58DA25D4349400C6FF57 /* AllGroupsTableViewController.swift in Sources */,
 				4EFC498125EFAB5E00289B06 /* LoadingAnimationView.swift in Sources */,
 				4EAB58DF25D434B900C6FF57 /* AllGroupsTableViewCell.swift in Sources */,
 				4E118AEA25DC706C000566D7 /* LikeButtonControl.swift in Sources */,
 				4EAB58C425D3FE8100C6FF57 /* FrendTableViewCell.swift in Sources */,
+				4EBD781325FBA1CD00B236CE /* CustomPushAnimator.swift in Sources */,
 				4E53E18325CAA7730083DD3E /* SceneDelegate.swift in Sources */,
+				4EBD781D25FBB39F00B236CE /* CustomPopAnimator.swift in Sources */,
 				4E1A1D3B25F2391800F3B7A9 /* TestClassTableViewController.swift in Sources */,
 				4EAEEBE225E7D8F4001D70E8 /* NewsTableViewCell.swift in Sources */,
 				4EF7732C25F03B9D00CE3BCE /* VLAvatarView.swift in Sources */,

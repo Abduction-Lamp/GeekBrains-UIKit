@@ -11,7 +11,7 @@ private let reuseIdentifier = "FrendPhoto"
 
 class FrendPhotoCollectionViewController: UICollectionViewController {
 
-    private var user: User!
+    var user: User!
     
     
     //  MARK:   - Life cycle
@@ -48,7 +48,11 @@ class FrendPhotoCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return user.photos?.count ?? 0
+        
+        guard let numberItems = user.photos?.count else {
+            return 0
+        }
+        return numberItems
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

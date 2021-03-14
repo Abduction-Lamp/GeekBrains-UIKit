@@ -101,4 +101,9 @@ class NewsTableViewController: UITableViewController {
     }
     */
 
+    
+    @IBAction func logOut(_ sender: UIBarButtonItem) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
 }

@@ -187,7 +187,7 @@
                                 <connections>
                                     <outlet property="avatarView" destination="Yb8-1R-Mdj" id="wKy-tZ-Uz5"/>
                                     <outlet property="fullNameLabel" destination="TPb-QF-rl4" id="alk-wr-58w"/>
-                                    <segue destination="KlB-jH-Cei" kind="show" identifier="SegueFromFrendsTableToFrendPhoto" id="Prc-XW-ZYe"/>
+                                    <segue destination="KlB-jH-Cei" kind="show" identifier="SegueFromFrendsTableToFrendPhoto" id="Muc-PI-7NB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -257,6 +257,7 @@
                                 </collectionViewCellContentView>
                                 <connections>
                                     <outlet property="photoImageView" destination="yUc-cL-MWg" id="q5C-DA-yQs"/>
+                                    <segue destination="sIR-tU-Pov" kind="show" customClass="ShowPhotoScreenSegue" customModule="VK_UIKit" customModuleProvider="target" id="ge9-X3-y67"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -270,6 +271,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sxk-ze-THR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3881" y="-607"/>
+        </scene>
+        <!--Photo Screen View Controller-->
+        <scene sceneID="8yC-Nr-Pfc">
+            <objects>
+                <viewController id="sIR-tU-Pov" customClass="PhotoScreenViewController" customModule="VK_UIKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="chr-bw-iMv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="nF5-GD-vEk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6b2-m3-D4L"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JW6-Sx-5Ea" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4817" y="-607"/>
         </scene>
         <!--Группы-->
         <scene sceneID="rEz-Qv-O8U">
@@ -352,7 +369,13 @@
                             <outlet property="delegate" destination="d81-0l-Ku7" id="LTO-RB-km8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Новости" id="u1u-jP-r0E"/>
+                    <navigationItem key="navigationItem" title="Новости" id="u1u-jP-r0E">
+                        <barButtonItem key="leftBarButtonItem" title="Выход" id="Ft5-3M-VX8">
+                            <connections>
+                                <action selector="logOut:" destination="d81-0l-Ku7" id="1Ke-P6-Evf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="newsTabelView" destination="uS8-h3-ps9" id="eCQ-q9-ZYU"/>
                     </connections>
@@ -396,7 +419,7 @@
         <!--Новости-->
         <scene sceneID="x4i-fs-eKi">
             <objects>
-                <navigationController id="Tuw-pn-aB4" sceneMemberID="viewController">
+                <navigationController id="Tuw-pn-aB4" customClass="CustomNavigationController" customModule="VK_UIKit" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Новости" image="doc.richtext.fill" catalog="system" id="dLl-yR-dWj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dRD-St-seL">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -471,7 +494,7 @@
         <!--Группы-->
         <scene sceneID="DSX-pM-x6b">
             <objects>
-                <navigationController id="Jkn-dV-nGJ" sceneMemberID="viewController">
+                <navigationController id="Jkn-dV-nGJ" customClass="CustomNavigationController" customModule="VK_UIKit" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Группы" image="person.3.fill" catalog="system" id="fSr-CX-MJ2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ulw-Sz-69D">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -488,7 +511,7 @@
         <!--Друзья-->
         <scene sceneID="nz1-Yt-69j">
             <objects>
-                <navigationController id="Fe1-Uh-zme" sceneMemberID="viewController">
+                <navigationController id="Fe1-Uh-zme" customClass="CustomNavigationController" customModule="VK_UIKit" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Друзья" image="person.fill.checkmark" catalog="system" id="mp0-r9-Ulu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xSv-0e-ZCg">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>

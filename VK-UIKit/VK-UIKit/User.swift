@@ -54,6 +54,20 @@ struct User {
     mutating func setPhotos(arrayNameByPhotos: [String]) {
         self.photos = arrayNameByPhotos
     }
+    
+    func getPhotoByIndex(index: Int) -> String? {
+        guard let photos = self.photos else {
+            return nil
+        }
+        
+        var photoName: String? = nil
+        
+        if index < photos.count && index >= 0 {
+            photoName = photos[index]
+        }
+        
+        return photoName
+    }
 }
 
 
@@ -113,20 +127,18 @@ class Frends {
     
     
     func sortByDown() {
+        
         self.frends?.sort(by: { (userOne: User, UserTwo: User) -> Bool in
-                        
             return userOne.lastName >= UserTwo.lastName
         })
-        
         self.calculationSectionsInfo()
     }
                 
     func sortByUp() {
+        
         self.frends?.sort(by: { (userOne: User, UserTwo: User) -> Bool in
-            
             return userOne.lastName < UserTwo.lastName
         })
-        
         self.calculationSectionsInfo()
     }
     
