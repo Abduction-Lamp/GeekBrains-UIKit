@@ -24,26 +24,19 @@ class CustomInteractiveTransition: UIPercentDrivenInteractiveTransition {
     
     @objc func handleScreenEdgeGesture(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         
-        
-        
         switch recognizer.state {
         case .began:
             self.hasStarted = true
             self.viewController?.navigationController?.popViewController(animated: true)
             
         case .changed:
-            let translation = recognizer.translation(in: viewController?.view)
+            let translation = recognizer.translation(in: recognizer.view?.superview)
             print("translation = \(translation.x)")
             
             let relativeTranslation = translation.x / (recognizer.view?.bounds.width ?? 1)
             let progress = max(0, min(1, relativeTranslation))
             self.shouldFinish = (progress > 0.33)
             
-//            print("relativeTranslation = \(relativeTranslation)")
-//            print("width = \(recognizer.view?.bounds.width)")
-//            print(progress)
-            
-            recognizer.setTranslation(CGPoint.zero, in: viewController?.view)
             self.update(progress)
             
         case .ended:
